@@ -21,7 +21,7 @@
 
 :o: [Controles](#controles)
 
-:o: [Câmera](#camera)
+:o: [Câmera](#câmera)
 
 :o: [Universo do Jogo](#universo-do-Jogo)
 
