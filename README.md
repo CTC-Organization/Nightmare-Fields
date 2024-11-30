@@ -10,15 +10,25 @@
 ---
 
 ## **Sumário**
+
 :o: [Autores](#autores)
+
 :o: [História](#história)
+
 :o: [Gameplay](#gameplay)
+
 :o: [Personagens](#personagens)
+
 :o: [Controles](#controles)
+
 :o: [Câmera](#camera)
+
 :o: [Universo do Jogo](#universo-do-Jogo)
+
 :o: [Inimigos](#inimigos)
+
 :o: [Interface](#interface)
+
 :o: [Cutscenes](#cutscenes)
 
 ---
