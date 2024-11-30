@@ -9,7 +9,7 @@
 
 ---
 
-## **Sumário**
+### **Sumário**
 
 :o: [Autores](#autores)
 
@@ -23,7 +23,7 @@
 
 :o: [Câmera](#câmera)
 
-:o: [Universo do Jogo](#universo-do-Jogo)
+:o: [Universo do Jogo](#universo-do-jogo)
 
 :o: [Inimigos](#inimigos)
 
@@ -33,12 +33,12 @@
 
 ---
 
-## **Autores**
- Nome 1  
- Christian Oliveira
- Nome 3  
- Nome 4  
- Nome 5  
+### **Autores**
+- Nome 1  
+- Christian Oliveira
+- Nome 3  
+- Nome 4  
+- Nome 5  
 
 ---
 
