@@ -36,7 +36,7 @@
 ### **Autores**
 - Nome 1  
 - Christian Oliveira
-- Nome 3  
+- Caio Fontes 
 - Nome 4  
 - Nome 5  
 
