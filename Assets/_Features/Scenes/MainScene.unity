@@ -921,7 +921,11 @@ GameObject:
   - component: {fileID: 1588659077}
   - component: {fileID: 1588659078}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Setupe
+=======
+  m_Name: etupx
+>>>>>>> christian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
