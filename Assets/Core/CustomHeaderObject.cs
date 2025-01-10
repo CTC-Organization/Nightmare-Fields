@@ -1,12 +1,14 @@
-using UnityEditor;
 using UnityEngine;
 
 public class CustomHeaderObject : MonoBehaviour
 {
     public Color textColor = Color.white;
     public Color backgroundColor = Color.red;
+
+#if UNITY_EDITOR
     private void OnValidate()
     {
-        EditorApplication.RepaintHierarchyWindow();
+        UnityEditor.EditorApplication.RepaintHierarchyWindow();
     }
+#endif
 }
