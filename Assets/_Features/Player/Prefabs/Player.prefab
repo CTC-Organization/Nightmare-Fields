@@ -52,6 +52,10 @@ MonoBehaviour:
   _moveSpeed: 5
   _acceleration: 10
   _deceleration: 10
+  currentHealth: 100
+  material: {fileID: 0}
+  defaultShader: {fileID: 0}
+  flashShader: {fileID: 0}
 --- !u!50 &7276464909973037443
 Rigidbody2D:
   serializedVersion: 5
@@ -180,7 +184,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 207e74c24f01db94483ebf2d9bf0f61c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

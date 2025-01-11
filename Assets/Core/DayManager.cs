@@ -33,7 +33,7 @@ public class DayManager : ScriptableObject
 
         lights = GameObject.FindGameObjectsWithTag("Light");
 
-        Debug.Log("Lights: "+ lights.Length);
+        //Debug.Log("Lights: "+ lights.Length);
     }
 
     public void CalcTime() // Used to calculate sec, min and hours
