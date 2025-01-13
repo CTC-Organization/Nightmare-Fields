@@ -12,7 +12,7 @@ using System.Linq; // used to access the volume component
 public class DayManager : ScriptableObject
 {
     private GameManager gm;
-    private TextMeshProUGUI timeDisplay; // Display Time
+    private TextMeshProUGUI hourDisplay; // Display Time
     private TextMeshProUGUI dayDisplay; // Display Day
     private Volume ppv; // this is the post processing volume
     private GameObject[] lights;
@@ -28,7 +28,7 @@ public class DayManager : ScriptableObject
     public void Initialize()
     {
         ppv = GameManager.instance.ppv;
-        timeDisplay = GameManager.instance.timeDisplay; // Display Time
+        hourDisplay = GameManager.instance.hourDisplay; // Display Time
         dayDisplay = GameManager.instance.dayDisplay;
 
         lights = GameObject.FindGameObjectsWithTag("Light");
@@ -109,7 +109,7 @@ public class DayManager : ScriptableObject
     public void DisplayTime() // Shows time and day in ui
     {
 
-        timeDisplay.text = string.Format("{0:00}:{1:00}", hours, mins); // The formatting ensures that there will always be 0's in empty spaces
+        hourDisplay.text = string.Format("{0:00}:{1:00}", hours, mins); // The formatting ensures that there will always be 0's in empty spaces
         dayDisplay.text = "Day: " + days; // display day counter
     }
 }

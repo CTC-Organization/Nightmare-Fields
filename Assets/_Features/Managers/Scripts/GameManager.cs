@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public DayManager dayManager;
     public static GameManager instance;
     public  Volume ppv; // this is the post processing volume
-    public TextMeshProUGUI timeDisplay; // Display Time
+    public TextMeshProUGUI hourDisplay; // Display Time
     public TextMeshProUGUI dayDisplay;
 
     void Start()
