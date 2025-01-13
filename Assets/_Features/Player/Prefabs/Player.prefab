@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5813337920059143314}
   - component: {fileID: 6007503575773693610}
   - component: {fileID: 7851458922920793207}
+  - component: {fileID: 1089460590062328332}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -216,3 +217,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1089460590062328332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185183857724772492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25b3db4a27568b4682bdd5e13a9eae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDown: 0.25
+  _bulletPrefab: {fileID: 7925154858442275306, guid: be609be04ed9ee6409f5ff81c66fc310, type: 3}
+  _firePoint: {fileID: 0}
