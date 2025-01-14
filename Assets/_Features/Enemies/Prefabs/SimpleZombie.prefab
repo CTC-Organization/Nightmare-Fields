@@ -169,7 +169,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     interval: 0.5
@@ -275,7 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e785bd1b0b86f94ea9d85fd250b77b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
   damage: 10
   attackCooldown: 1
   hitBoxSize: {x: 1, y: 1, z: 0}

@@ -82,7 +82,14 @@ public class EnemyController : MonoBehaviour
     /// <returns>Retorna uma Coroutine que aguarda o cooldown do ataque</returns>
     IEnumerator Attack(GameObject targetToAttack)
     {
-        attackOrigin = transform.position + transform.up * attackStartDistance;
+        // Calcula a direção do alvo em relação ao inimigo
+        Vector3 directionToTarget = (targetToAttack.transform.position - transform.position).normalized;
+
+        // Define a origem do ataque com base na direção calculada
+        attackOrigin = transform.position + directionToTarget * attackStartDistance;
+
+
+        //attackOrigin = transform.position + transform.up * attackStartDistance;
         animator.SetTrigger("Attack");
 
         LayerMask targetMask = 1 << targetToAttack.layer;
