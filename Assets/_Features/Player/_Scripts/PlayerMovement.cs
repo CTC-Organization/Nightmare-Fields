@@ -1,13 +1,21 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _acceleration = 10f;
     [SerializeField] private float _deceleration = 10f;
+    [SerializeField] private TrailRenderer tr;
 
     private Vector2 _movement;
     private Vector2 _currentVelocity;
+
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 24f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
 
     private Rigidbody2D _rb;
 
@@ -16,20 +24,69 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
+        if (isDashing)
+        {
+            return;
+        }
+
+        // Movimentação normal
+        _movement.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (_movement.magnitude > 0)
         {
-            _currentVelocity = Vector2.Lerp(_currentVelocity, _movement * _moveSpeed, _acceleration * Time.deltaTime);
+            _currentVelocity = Vector2.Lerp(_currentVelocity, _movement.normalized * _moveSpeed, _acceleration * Time.deltaTime);
+            _rb.linearVelocity = _currentVelocity;
         }
         else
         {
             _currentVelocity = Vector2.Lerp(_currentVelocity, Vector2.zero, _deceleration * Time.deltaTime);
+            _rb.linearVelocity = _currentVelocity;
         }
 
-        _rb.linearVelocity = _currentVelocity;
+        // Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        // Salva gravidade atual
+        float originalGravity = _rb.gravityScale;
+        _rb.gravityScale = 0f;
+
+        // Determina a direção do dash
+        Vector2 dashDirection = _movement.normalized;
+
+        // Se o jogador não está se movendo, usa a direção do eixo X
+        if (dashDirection == Vector2.zero)
+        {
+            dashDirection = new Vector2(transform.localScale.x, 0f);
+        }
+
+        // Aplica a velocidade do dash
+        _rb.linearVelocity = dashDirection * dashingPower;
+
+        // Ativa o efeito visual
+        tr.emitting = true;
+
+        yield return new WaitForSeconds(dashingTime);
+
+        // Reseta o movimento e o efeito visual
+        _rb.linearVelocity = Vector2.zero;
+        tr.emitting = false;
+        _rb.gravityScale = originalGravity;
+
+        isDashing = false;
+
+        // Espera pelo cooldown
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
