@@ -40,6 +40,7 @@ public class EnemyController : MonoBehaviour
 
     private IAstarAI ai; // Refer�ncia ao componente IAstarAI
 
+
     void Start()
     {
 
@@ -63,6 +64,8 @@ public class EnemyController : MonoBehaviour
             if (attackCoroutine != null) StopCoroutine(attackCoroutine);
             attackCoroutine = StartCoroutine(Attack(target));
         }
+
+        UpdateAnimatorParameters();
     }
 
     /// <summary>
@@ -82,7 +85,14 @@ public class EnemyController : MonoBehaviour
     /// <returns>Retorna uma Coroutine que aguarda o cooldown do ataque</returns>
     IEnumerator Attack(GameObject targetToAttack)
     {
-        attackOrigin = transform.position + transform.up * attackStartDistance;
+        // Calcula a direção do alvo em relação ao inimigo
+        Vector3 directionToTarget = (targetToAttack.transform.position - transform.position).normalized;
+
+        // Define a origem do ataque com base na direção calculada
+        attackOrigin = transform.position + directionToTarget * attackStartDistance;
+
+
+        //attackOrigin = transform.position + transform.up * attackStartDistance;
         animator.SetTrigger("Attack");
 
         LayerMask targetMask = 1 << targetToAttack.layer;
@@ -113,5 +123,28 @@ public class EnemyController : MonoBehaviour
         Collider2D hit = hits.FirstOrDefault(collider => (targetMask.value & (1 << collider.gameObject.layer)) != 0);
         if (hit != null) return HitType.Hit; // Substitua por seu tipo de retorno adequado
         return HitType.Miss; // Substitua por seu tipo de retorno adequado
+    }
+
+    private void UpdateAnimatorParameters()
+    {
+        // Direção de movimento atual
+        Vector3 velocity = ai.velocity; // Obtém a velocidade atual do IAstarAI
+        if (velocity.magnitude > 0.1f)
+        {
+            animator.SetFloat("moveSpeed", velocity.x);
+            animator.SetFloat("moveX", velocity.x);
+            animator.SetFloat("moveY", velocity.y);
+
+            // Salva a última direção de movimento
+            animator.SetFloat("lastMoveX", velocity.x);
+            animator.SetFloat("lastMoveY", velocity.y);
+        }
+        else
+        {
+            // Para quando não houver movimento, mantenha os valores anteriores
+            animator.SetFloat("moveSpeed", 0);
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
+        }
     }
 }

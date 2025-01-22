@@ -61,6 +61,15 @@ TagManager:
   - name: Projectile
     uniqueID: 2780797835
     locked: 0
+  - name: Building
+    uniqueID: 1970894701
+    locked: 0
+  - name: VFX
+    uniqueID: 3485212945
+    locked: 0
+  - name: UI
+    uniqueID: 3823631611
+    locked: 0
   m_RenderingLayers:
   - Default
   - Lights

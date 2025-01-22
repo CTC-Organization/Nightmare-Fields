@@ -78,24 +78,28 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayerFlash()
     {
-        if (flashRoutine == null)
-            flashRoutine = StartCoroutine(FlashRoutine());
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+            material.shader = defaultShader;
+        }
+        flashRoutine = StartCoroutine(FlashRoutine());
     }
 
     private IEnumerator FlashRoutine()
     {
         int flashes = 3;          // Quantidade de piscadas
-        float interval = 0.5f;    // Intervalo entre as piscadas (meio segundo)
+        float interval = 1f;    // Intervalo entre as piscadas (meio segundo)
 
         for (int i = 0; i < flashes; i++)
         {
             // Troca para o shader que "acende"
             material.shader = flashShader;
-            yield return new WaitForSeconds(interval / 2);
+            yield return new WaitForSeconds((interval * interval / flashes / 2) - 0.01f);
 
             // Retorna ao shader padr�o
             material.shader = defaultShader;
-            yield return new WaitForSeconds(interval / 2);
+            yield return new WaitForSeconds((interval * interval / flashes / 2) - 0.01f);
         }
     }
 
