@@ -61,6 +61,9 @@ TagManager:
   - name: Projectile
     uniqueID: 2780797835
     locked: 0
+  - name: Collectable
+    uniqueID: 1663410299
+    locked: 0
   - name: Building
     uniqueID: 1970894701
     locked: 0

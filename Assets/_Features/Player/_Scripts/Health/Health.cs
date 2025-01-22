@@ -4,13 +4,34 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
+    [SerializeField] private float flashRoutineDuration = 2f;
     public float currentHealth { get; private set; }
     private bool isInvulnerable = false;
+    private Coroutine invulnerableCoroutine;
+
+    [Header("VFX Config")]
+    [Tooltip("Material para tratar shader")]
+    [SerializeField]
+    private Material material;      // Material associado ao SpriteRenderer
+    [SerializeField]
+    [Tooltip("Salva shader original caso se perca")] private Shader defaultShader;  // Shader padr�o do material
+    [SerializeField]
+    [Tooltip("Shader que simula piscada ao levar hit")] private Shader flashShader;
+    [Tooltip("Guarda rotina de piscadas por segundo ao ser hitado")] private Coroutine flashRoutine;
+
 
     private void Awake()
     {
         currentHealth = startingHealth;
         Debug.Log($"Initial Health: {currentHealth}");
+    }
+
+    private void Start()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        material = spriteRenderer.material; // Obt�m o material do SpriteRenderer
+        defaultShader = material.shader;
+        flashShader = Shader.Find("GUI/Text Shader"); // shader que consegue piscar
     }
 
     private void takeDamage(float _damage)
@@ -24,7 +45,9 @@ public class Health : MonoBehaviour
             {
                 //hurt
                 Debug.Log("Player Hurt");
-                StartCoroutine(InvulnerabilityCoroutine());
+                if (invulnerableCoroutine != null) StopCoroutine(invulnerableCoroutine);
+                invulnerableCoroutine = StartCoroutine(InvulnerabilityCoroutine());
+
             }
             else
             {
@@ -62,11 +85,13 @@ public class Health : MonoBehaviour
 
     private IEnumerator InvulnerabilityCoroutine()
     {
+        PlayerFlash();
         isInvulnerable = true;
         Debug.Log("Player is now invulnerable.");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(flashRoutineDuration);
         isInvulnerable = false;
         Debug.Log("Player is no longer invulnerable.");
+        invulnerableCoroutine = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,4 +102,51 @@ public class Health : MonoBehaviour
             takeDamage(1);
         }
     }
+
+    public void PlayerFlash()
+    {
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+            material.shader = defaultShader;
+        }
+        flashRoutine = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        int flashes = 3;          // Quantidade de piscadas
+        float interval = flashRoutineDuration / (3 * 2) - 0.01f;    // Intervalo entre as piscadas (meio segundo)
+
+        for (int i = 0; i < flashes; i++)
+        {
+            // Troca para o shader que "acende"
+            material.shader = flashShader;
+            yield return new WaitForSeconds(interval);
+
+            // Retorna ao shader padr�o
+            material.shader = defaultShader;
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    public void TakeEnemyAttackDamage(HitType hitType, float damage)
+    {
+
+
+        switch (hitType)
+        {
+            case HitType.Hit:
+                {
+
+                    currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+                    PlayerFlash(); // flash pisca pisca do player
+                    if (currentHealth <= 0) Debug.Log("Player Died"); // Die
+                    break;
+                }
+            default:
+                break;
+        }
+    }
+
 }

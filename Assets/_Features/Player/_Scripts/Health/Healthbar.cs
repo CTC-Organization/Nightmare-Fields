@@ -9,6 +9,7 @@ public class Healthbar : MonoBehaviour
 
     private void Start()
     {
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
         totalhealthBar.fillAmount = playerHealth.currentHealth / 10f;
     }
 

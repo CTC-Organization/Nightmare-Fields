@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 2176778396833315291}
   - component: {fileID: 6265945131728429611}
   - component: {fileID: 7678263879996182864}
+  - component: {fileID: 2303751957345154772}
+  - component: {fileID: 7007042320948797725}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Enemy
@@ -275,11 +277,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e785bd1b0b86f94ea9d85fd250b77b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  attackCooldown: 1
-  hitBoxSize: {x: 1, y: 1, z: 0}
-  attackOrigin: {x: 0, y: -0.25, z: 0}
-  attackStartDistance: 1
   animator: {fileID: 5128840497692687880}
   aiDestinationSetter: {fileID: 2283252789431092276}
-  target: {fileID: 0}
+--- !u!114 &2303751957345154772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfcd9b960eacfa47aeb6bb153ecfa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackCooldown: 2
+  hitBoxSize: {x: 1, y: 1, z: 0}
+  attackStartDistance: 0
+  animator: {fileID: 5128840497692687880}
+  attackOrigin: {x: 0, y: -0.4, z: 0}
+--- !u!114 &7007042320948797725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24823212148049a4f95244a8ac584fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingEnemyHealth: 1
