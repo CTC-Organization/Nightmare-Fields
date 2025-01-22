@@ -752,7 +752,7 @@
     "m_Title": "Permite mudar cor",
     "m_Content": "pode controlar a cor da partícula\n\nVertex - Texture rgba - multiply com color e texture - base color",
     "m_TextSize": 0,
-    "m_Theme": 0,
+    "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
         "x": -756.0,
@@ -978,7 +978,7 @@
     "m_Title": "Converte em Pixel art",
     "m_Content": "Mapeador UV para shader virar pixel art\n\nuv - multiply - floor deixa INT - divide subdivide a tetura basedo na redução de floor como na imagem",
     "m_TextSize": 0,
-    "m_Theme": 0,
+    "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
         "x": -1921.0,
@@ -1080,11 +1080,11 @@
     "m_Title": "Ajusta posição pixels",
     "m_Content": "tilling and offset ajusta posição e escala dos pixels. Divide mantém proporção do deslocamento para sempre centralizar pixel mais iluminado",
     "m_TextSize": 0,
-    "m_Theme": 0,
+    "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
-        "x": -1822.0,
-        "y": 881.0,
+        "x": -1858.0,
+        "y": 932.0,
         "width": 200.0,
         "height": 160.0
     },
@@ -1400,7 +1400,7 @@
         "scale"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -1810,7 +1810,7 @@
     "m_Title": "Tira fundo preto",
     "m_Content": "Isso tira o fundo preto da textura\nvertex (out) - multiply - Split (a) - fragment (alpha 1)\n\n",
     "m_TextSize": 0,
-    "m_Theme": 0,
+    "m_Theme": 1,
     "m_Position": {
         "serializedVersion": "2",
         "x": -320.0,
@@ -2086,7 +2086,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 32.0,
+    "m_Value": 8.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
