@@ -54,6 +54,7 @@ public class Health : MonoBehaviour
             {
                 //die
                 Debug.Log("Player Died");
+                SetDying();
             }
         }
         else
@@ -68,13 +69,13 @@ public class Health : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Key 'E' Pressed");
-            takeDamage(0);
+            takeDamage(1);
         }
         //adding life
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Key 'P' Pressed");
-            AddHealth(0);
+            AddHealth(1);
         }
     }
 
@@ -101,7 +102,7 @@ public class Health : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Collided with Enemy: " + collision.name);
-            takeDamage(0);
+            takeDamage(1); // dano padrao
         }
     }
 
@@ -154,5 +155,21 @@ public class Health : MonoBehaviour
                 break;
         }
     }
+    private void SetDying()
+    {
+        Debug.Log("Player esta morrendo");
+        // PlayerMovement em = GetComponent<PlayerMovement>();
+        // em.isDying = true;
+        // em.animator.SetBool("IsDying", em.isDying);
+        // colocar função Die() após fim da animação de morte...
+    }
 
+        public void Die()
+    {
+        Debug.Log("Inimigo " + name + " morreu");
+        Destroy(gameObject); // colocar animação - o final da animação ativa a função de destuir o objeto em destruir
+        // essa função deve appenas ativar um boolean isDead e ativar o animator para ativara a animação de morte (no final dispara o evento de destruir)
+        GameManager.instance.GameOver();
+    
+    }
 }

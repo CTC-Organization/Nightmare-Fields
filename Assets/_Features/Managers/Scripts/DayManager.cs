@@ -63,7 +63,7 @@ public class DayManager : ScriptableObject
     public void ControlPPV() // used to adjust the post processing slider.
     {
         //ppv.weight = 0;
-        if (hours >= 21 && hours < 22) // dusk at 21:00 / 9pm    -   until 22:00 / 10pm
+        if (hours >= 18 && hours < 19) // dusk at 21:00 / 9pm    -   until 22:00 / 10pm
         {
             ppv.weight = (float)mins / 60; // since dusk is 1 hr, we just divide the mins by 60 which will slowly increase from 0 - 1 
             //for (int i = 0; i < stars.Length; i++)
@@ -85,7 +85,7 @@ public class DayManager : ScriptableObject
         }
 
 
-        if (hours >= 6 && hours < 7) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
+        if (hours >= 5 && hours < 6) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
             ppv.weight = 1 - (float)mins / 60; // we minus 1 because we want it to go from 1 - 0
             //for (int i = 0; i < stars.Length; i++)

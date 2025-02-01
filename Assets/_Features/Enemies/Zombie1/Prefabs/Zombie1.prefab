@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8026237430215474164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -255,8 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e785bd1b0b86f94ea9d85fd250b77b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 20736263090893180}
   aiDestinationSetter: {fileID: 2283252789431092276}
+  isDying: 0
 --- !u!114 &2303751957345154772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,8 +273,8 @@ MonoBehaviour:
   damage: 1
   attackCooldown: 10
   hitBoxSize: {x: 0.97, y: 1.55, z: 0}
-  attackStartDistance: 2.37
-  animator: {fileID: 0}
+  attackStartDistance: 0.75
+  animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
 --- !u!114 &7007042320948797725
 MonoBehaviour:
