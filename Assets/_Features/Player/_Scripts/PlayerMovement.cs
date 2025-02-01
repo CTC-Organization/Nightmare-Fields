@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -63,7 +64,8 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-
+        // Ignora colisão com a layer "Enemy"
+        toggleEnemyLayerCollision(true);
         // Salva gravidade atual
         float originalGravity = _rb.gravityScale;
         _rb.gravityScale = 0f;
@@ -90,10 +92,17 @@ public class PlayerMovement : MonoBehaviour
         tr.emitting = false;
         _rb.gravityScale = originalGravity;
 
+        toggleEnemyLayerCollision(false);
         isDashing = false;
 
         // Espera pelo cooldown
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
+    private void toggleEnemyLayerCollision(bool toggle) {
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), toggle);
+    }
+
+
 }

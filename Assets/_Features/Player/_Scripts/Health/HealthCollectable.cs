@@ -6,7 +6,7 @@ public class HealthCollectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Colisão detectada com: " + collision.name);
             Health healthComponent = collision.GetComponent<Health>();
@@ -19,10 +19,6 @@ public class HealthCollectable : MonoBehaviour
             {
                 Debug.LogError("Componente Health não encontrado no objeto: " + collision.name);
             }
-        }
-        else
-        {
-            Debug.LogError("Colisão detectada, mas o objeto é null.");
         }
     }
 }

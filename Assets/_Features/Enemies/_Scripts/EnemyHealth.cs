@@ -39,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.CompareTag("Player_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_Bullet: {collision.name}");
+            Destroy(collision.gameObject);
             TakeDamage(1);
         }
     }
