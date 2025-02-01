@@ -6,9 +6,11 @@ public class HealthCollectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision != null)
         {
-            Debug.Log("Colisão detectada com: " + collision.name);
+            if (!collision.CompareTag("Player")) return;
+            Debug.Log("Colisï¿½o detectada com: " + collision.name);
             Health healthComponent = collision.GetComponent<Health>();
             if (healthComponent != null)
             {
@@ -17,12 +19,12 @@ public class HealthCollectable : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Componente Health não encontrado no objeto: " + collision.name);
+                Debug.LogError("Componente Health nï¿½o encontrado no objeto: " + collision.name);
             }
         }
         else
         {
-            Debug.LogError("Colisão detectada, mas o objeto é null.");
+            Debug.LogError("Colisï¿½o detectada, mas o objeto ï¿½ null.");
         }
     }
 }

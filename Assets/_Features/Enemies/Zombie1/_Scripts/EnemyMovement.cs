@@ -1,11 +1,13 @@
 using UnityEngine;
 using Pathfinding;
+using Unity.VisualScripting;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    public Animator animator;
     [SerializeField] private AIDestinationSetter aiDestinationSetter;
     private IAstarAI ai;
+    public bool isDying = false;
 
     private void Start()
     {
@@ -21,6 +23,21 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isDying && !ai.isStopped)
+        {
+
+            ai.destination = transform.position;
+            ai.isStopped = true; // Para a IA
+            if (TryGetComponent<BoxCollider>(out var collider))
+            {
+                collider.enabled = false;
+            }
+            return;
+        }
+        else if (isDying)
+        {
+            return;
+        }
         UpdateAnimatorParameters();
     }
 

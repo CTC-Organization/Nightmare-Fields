@@ -4,10 +4,10 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
-    [SerializeField] private float flashRoutineDuration = 2f;
     public float currentHealth { get; private set; }
-    private bool isInvulnerable = false;
-    private Coroutine invulnerableCoroutine;
+    public bool isInvulnerable = false;
+    public Coroutine invulnerableCoroutine;
+    [SerializeField] private float invulnerabilityDurationOnHit;
 
     [Header("VFX Config")]
     [Tooltip("Material para tratar shader")]
@@ -39,14 +39,15 @@ public class Health : MonoBehaviour
         if (!isInvulnerable)
         {
             currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-            Debug.Log($"Took Damage: {_damage}, Current Health: {currentHealth}");
+            Debug.Log($"Caio Took Damage: {_damage}, Current Health: {currentHealth}");
 
             if (currentHealth > 0)
             {
                 //hurt
-                Debug.Log("Player Hurt");
+                Debug.Log("Dano no player por aproximacao");
                 if (invulnerableCoroutine != null) StopCoroutine(invulnerableCoroutine);
-                invulnerableCoroutine = StartCoroutine(InvulnerabilityCoroutine());
+                PlayerFlash();
+                invulnerableCoroutine = StartCoroutine(InvulnerabilityCoroutine(invulnerabilityDurationOnHit));
 
             }
             else
@@ -67,13 +68,13 @@ public class Health : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Key 'E' Pressed");
-            takeDamage(1);
+            takeDamage(0);
         }
         //adding life
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Key 'P' Pressed");
-            AddHealth(1);
+            AddHealth(0);
         }
     }
 
@@ -83,12 +84,13 @@ public class Health : MonoBehaviour
         Debug.Log($"Healed: {_value}, Current Health: {currentHealth}");
     }
 
-    private IEnumerator InvulnerabilityCoroutine()
+    public IEnumerator InvulnerabilityCoroutine(float invulnerabilityDuration)
     {
-        PlayerFlash();
         isInvulnerable = true;
         Debug.Log("Player is now invulnerable.");
-        yield return new WaitForSeconds(flashRoutineDuration);
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        Debug.Log("Se passou: " + invulnerabilityDuration + "segundos");
+
         isInvulnerable = false;
         Debug.Log("Player is no longer invulnerable.");
         invulnerableCoroutine = null;
@@ -99,7 +101,7 @@ public class Health : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Collided with Enemy: " + collision.name);
-            takeDamage(1);
+            takeDamage(0);
         }
     }
 
@@ -110,13 +112,14 @@ public class Health : MonoBehaviour
             StopCoroutine(flashRoutine);
             material.shader = defaultShader;
         }
+        ; ;
         flashRoutine = StartCoroutine(FlashRoutine());
     }
 
     private IEnumerator FlashRoutine()
     {
         int flashes = 3;          // Quantidade de piscadas
-        float interval = flashRoutineDuration / (3 * 2) - 0.01f;    // Intervalo entre as piscadas (meio segundo)
+        float interval = invulnerabilityDurationOnHit / (3 * 2) - 0.01f;    // Intervalo entre as piscadas (meio segundo)
 
         for (int i = 0; i < flashes; i++)
         {
@@ -130,17 +133,20 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeEnemyAttackDamage(HitType hitType, float damage)
+    public void TakeEnemyAttackDamage(HitType hitType, float damage) // caso o hitType for HitType.defend, poderia causar dano a alguma propriedade escudo de power up
     {
-
-
         switch (hitType)
         {
             case HitType.Hit:
                 {
+                    Debug.Log("Dano no player por ataque basico do inimigo");
 
+                    // mexe nas rotinas - invencibilidade e flash do player
+                    if (invulnerableCoroutine != null) StopCoroutine(invulnerableCoroutine);
+                    PlayerFlash();
+                    invulnerableCoroutine = StartCoroutine(InvulnerabilityCoroutine(invulnerabilityDurationOnHit));
+                    // mexe na vida
                     currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-                    PlayerFlash(); // flash pisca pisca do player
                     if (currentHealth <= 0) Debug.Log("Player Died"); // Die
                     break;
                 }

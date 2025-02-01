@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            SetDying();
         }
     }
 
@@ -27,7 +27,15 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + value, 0, startingEnemyHealth);
     }
 
-    private void Die()
+    private void SetDying()
+    {
+        Debug.Log("Inimigo esta morrendo");
+        EnemyMovement em = GetComponent<EnemyMovement>();
+        em.isDying = true;
+        em.animator.SetBool("IsDying", em.isDying);
+    }
+
+    public void Die()
     {
         Debug.Log("Inimigo " + name + " morreu");
         Destroy(gameObject); // colocar animação - o final da animação ativa a função de destuir o objeto em destruir

@@ -21,13 +21,14 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Game Config")]
-    public float currentHealth = 100f;
+    private Health health;
 
-     // shader pode ser melhorada futuramente
+    // shader pode ser melhorada futuramente
 
 
     private void Awake()
     {
+        health = GetComponent<Health>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-      private IEnumerator Dash()
+    private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
@@ -82,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
 
         // Ativa o efeito visual
         tr.emitting = true;
+
+        //deixando invencivel
+        if (health.invulnerableCoroutine != null) StopCoroutine(health.invulnerableCoroutine);
+        health.invulnerableCoroutine = StartCoroutine(health.InvulnerabilityCoroutine(dashingTime));
+        //deixando invencivel
 
         yield return new WaitForSeconds(dashingTime);
 

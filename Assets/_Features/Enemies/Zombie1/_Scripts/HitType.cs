@@ -4,5 +4,5 @@ using System.Collections;
 
 public enum HitType
 {
-      Miss, Hit, Defendeu, Invulneravel, NoTarget, EnvironmentDamage
+      Miss, Hit, Defendeu, Invulnerable, NoTarget, EnvironmentDamage
 }
