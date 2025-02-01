@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     public Health playerHealth;
 
     public bool isPaused = false;
+
+    [SerializeField] private InputActionReference pauseResumePressed;
 
     void Start()
     {
@@ -45,19 +49,36 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
     }
 
-    public void Pause()
+
+    private void OnEnable()
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
-        Time.timeScale = 0;
-        isPaused = true;
+        pauseResumePressed.action.started += PauseResume;
+    }
+    private void OnDisable()
+    {
+        pauseResumePressed.action.started -= PauseResume;
     }
 
-    public void ResumeGame()
+    /// <summary>
+    /// Função responsável pelo attack
+    /// </summary>
+    private void PauseResume(InputAction.CallbackContext ctx)
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(false);
-        Time.timeScale = 1;
-        isPaused = false;
+        if (isPaused) // resume
+        {
+            Debug.Log("Resume");
+            if (pausePanel != null)
+                pausePanel.SetActive(false);
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else if (!isPaused) // pause
+        {
+            Debug.Log("Pausou");
+            if (pausePanel != null)
+                pausePanel.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+        }
     }
 }

@@ -42,10 +42,6 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.color = Color.red;
         if (target != null)
         {
-            Vector3 directionToTarget = (target.transform.position - transform.position).normalized;
-
-
-            attackOrigin = transform.position + directionToTarget * attackStartDistance;
 
             Gizmos.DrawWireCube(attackOrigin, hitBoxSize);
         }

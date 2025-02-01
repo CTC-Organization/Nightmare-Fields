@@ -147,6 +147,56 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GameControl",
+            "id": "217c85a6-a819-4a04-a935-fd3bd83db2f5",
+            "actions": [
+                {
+                    "name": "PauseResume",
+                    "type": "Button",
+                    "id": "62520fb3-3b21-476d-835d-9aad158be34a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0585bb4c-3369-49c2-9eda-9b54e7620f4d",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseResume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "748794fd-f451-494f-993f-4c0afb3261e8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseResume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ddb71c76-771e-4c1f-9d1e-101bb4456dd8",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseResume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

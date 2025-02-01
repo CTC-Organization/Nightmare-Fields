@@ -72,9 +72,9 @@ public class Health : MonoBehaviour
             takeDamage(1);
         }
         //adding life
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Key 'P' Pressed");
+            Debug.Log("Key 'Q' Pressed");
             AddHealth(1);
         }
     }
