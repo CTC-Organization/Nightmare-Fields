@@ -67,6 +67,12 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         // Ignora colisão com a layer "Enemy"
         toggleEnemyLayerCollision(true);
+
+        if (health.invulnerableCoroutine != null) StopCoroutine(health.invulnerableCoroutine);
+        health.invulnerableCoroutine = StartCoroutine(health.InvulnerabilityCoroutine(dashingTime));
+   
+
+
         // Salva gravidade atual
         float originalGravity = _rb.gravityScale;
         _rb.gravityScale = 0f;
@@ -86,10 +92,6 @@ public class PlayerMovement : MonoBehaviour
         // Ativa o efeito visual
         tr.emitting = true;
 
-        //deixando invencivel
-        if (health.invulnerableCoroutine != null) StopCoroutine(health.invulnerableCoroutine);
-        health.invulnerableCoroutine = StartCoroutine(health.InvulnerabilityCoroutine(dashingTime));
-        //deixando invencivel
 
         yield return new WaitForSeconds(dashingTime);
 
@@ -106,9 +108,8 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-    private void toggleEnemyLayerCollision(bool toggle) {
+    private void toggleEnemyLayerCollision(bool toggle)
+    {
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), toggle);
     }
-
-
 }

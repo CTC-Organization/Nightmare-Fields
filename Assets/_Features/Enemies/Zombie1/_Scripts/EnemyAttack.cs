@@ -12,8 +12,7 @@ public class EnemyAttack : MonoBehaviour
     private Coroutine attackRoutine = null;
 
     [SerializeField] private Vector3 attackOrigin; // Dist�ncia de ataque
-
-
+    [SerializeField] private EnemyMovement enemyMovement;
     private float lastAttackTime;
     private GameObject target;
 
@@ -25,12 +24,12 @@ public class EnemyAttack : MonoBehaviour
     private void Update()
     {
 
-        if (GetComponent<EnemyMovement>().isDying)
+        if (enemyMovement.isDying)
         {
             if (attackRoutine != null) StopAllCoroutines();
             return;
         }
-        else if (target != null && Time.time - lastAttackTime >= attackCooldown)
+        else if (enemyMovement.ai.reachedDestination && target != null && Time.time - lastAttackTime >= attackCooldown)
         {
             attackRoutine = StartCoroutine(Attack());
         }

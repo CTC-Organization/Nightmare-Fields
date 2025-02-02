@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public Animator animator;
     [SerializeField] private AIDestinationSetter aiDestinationSetter;
-    private IAstarAI ai;
+    public IAstarAI ai;
     public bool isDying = false;
 
     private void Start()

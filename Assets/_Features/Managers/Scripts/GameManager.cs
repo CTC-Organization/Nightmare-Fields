@@ -62,8 +62,9 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Função responsável pelo attack
     /// </summary>
-    private void PauseResume(InputAction.CallbackContext ctx)
+    void PauseResume(InputAction.CallbackContext ctx)
     {
+        Debug.Log("apertou");
         if (isPaused) // resume
         {
             Debug.Log("Resume");

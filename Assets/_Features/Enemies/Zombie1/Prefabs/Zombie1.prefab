@@ -276,6 +276,7 @@ MonoBehaviour:
   attackStartDistance: 0.75
   animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
+  enemyMovement: {fileID: 7678263879996182864}
 --- !u!114 &7007042320948797725
 MonoBehaviour:
   m_ObjectHideFlags: 0
