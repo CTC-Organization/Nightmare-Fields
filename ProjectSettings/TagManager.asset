@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Obstacle
+  - Light
   layers:
   - Default
   - TransparentFX
@@ -49,5 +50,15 @@ TagManager:
   - name: Obstacle
     uniqueID: 220278879
     locked: 0
+  - name: Lights
+    uniqueID: 792955991
+    locked: 0
+  - name: Player
+    uniqueID: 3458856425
+    locked: 0
+  - name: Projectile
+    uniqueID: 2780797835
+    locked: 0
   m_RenderingLayers:
   - Default
+  - Lights
