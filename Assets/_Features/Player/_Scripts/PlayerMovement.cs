@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,9 +8,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _acceleration = 10f;
     [SerializeField] private float _deceleration = 10f;
+    [SerializeField] private TrailRenderer tr;
+
     private Vector2 _movement;
     private Vector2 _currentVelocity;
-    [SerializeField] private TrailRenderer tr;
+
+    AudioSource audioSource; 
+
+    private bool isRunning = false;
+    float x;
+
+    Animator anim;
+    private Vector2 lastMoveDirection;
+    private bool facingLeft = true;
+    private Vector2 input;
+
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 24f;
@@ -23,7 +34,17 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Game Config")]
     private Health health;
+    public float currentHealth = 100f;
 
+    [Header("Configura��es de VFX")]
+    [Tooltip("Material para tratar shader")]
+    [SerializeField]
+    private Material material;      // Material associado ao SpriteRenderer
+    [SerializeField]
+    [Tooltip("Salva shader original caso se perca")] private Shader defaultShader;  // Shader padr�o do material
+    [SerializeField]
+    [Tooltip("Shader que simula piscada ao levar hit")] private Shader flashShader;
+    [Tooltip("Guarda rotina de piscadas por segundo ao ser hitado")] private Coroutine flashRoutine;
     // shader pode ser melhorada futuramente
 
 
@@ -32,12 +53,56 @@ public class PlayerMovement : MonoBehaviour
         health = GetComponent<Health>();
         _rb = GetComponent<Rigidbody2D>();
     }
+    private void Start()
+    {   
+
+        audioSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        material = spriteRenderer.material; // Obt�m o material do SpriteRenderer
+        defaultShader = material.shader;
+        flashShader = Shader.Find("GUI/Text Shader"); // shader que consegue piscar
+    }
 
     void Update()
-    {
+    {   
+        ProccessInputs();
+        Animate();
+        if(input.x < 0 && facingLeft || input.x > 0 && !facingLeft)
+        {
+            Flip();
+        }
+        
         if (isDashing)
         {
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+        isRunning = true;
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+        isRunning = false;
+        }
+
+        // Atualiza o parâmetro do Animator
+        anim.SetBool("IsRunning", isRunning);
+
+         x = Input.GetAxis("Horizontal") *  _moveSpeed;
+        _rb.linearVelocity = new Vector2(x, _rb.linearVelocity.y);
+
+        if (_rb.linearVelocity.x != 0)
+        {
+            if (!audioSource.isPlaying)
+            {   
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
         }
 
         // Movimentação normal
@@ -59,6 +124,39 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+    }
+    
+    void ProccessInputs()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        if((moveX == 0 && moveY == 0) && (input.x != 0 || input.y != 0))
+        {
+            lastMoveDirection = input;
+        }
+
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+
+        input.Normalize();
+    }
+
+    void Animate()
+    {   
+        anim.SetFloat("MoveX", input.x);
+        anim.SetFloat("MoveY", input.y);
+        anim.SetFloat("MoveMagnitude", input.magnitude);
+        anim.SetFloat("LastMoveX", lastMoveDirection.x);
+        anim.SetFloat("LastMoveY", lastMoveDirection.y);
+    }
+
+    void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        facingLeft = !facingLeft;
     }
 
     private IEnumerator Dash()
@@ -112,4 +210,47 @@ public class PlayerMovement : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), toggle);
     }
+
+    public void PlayerFlash()
+    {
+        if (flashRoutine == null)
+            flashRoutine = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        int flashes = 3;          // Quantidade de piscadas
+        float interval = 0.5f;    // Intervalo entre as piscadas (meio segundo)
+
+        for (int i = 0; i < flashes; i++)
+        {
+            // Troca para o shader que "acende"
+            material.shader = flashShader;
+            yield return new WaitForSeconds(interval / 2);
+
+            // Retorna ao shader padr�o
+            material.shader = defaultShader;
+            yield return new WaitForSeconds(interval / 2);
+        }
+    }
+
+    public void TakeDamage(HitType hitType, float damage)
+    {
+        switch (hitType)
+        {
+            case HitType.Hit:
+                {
+                    currentHealth -= damage;
+                    PlayerFlash(); // flash pisca pisca do player
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
+    
+
+
+
+
