@@ -1910,18 +1910,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1069541143}
     m_Modifications:
-    - target: {fileID: -4238769052676208897, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: isInvulnerable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4238769052676208897, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: startingHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -4238769052676208897, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: invulnerabilityDurationOnHit
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1185183857724772492, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1965,30 +1953,6 @@ PrefabInstance:
     - target: {fileID: 1799326552962624206, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276464909973037443, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851458922920793207, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9716981
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851458922920793207, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5512501
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851458922920793207, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_Color.r
-      value: 0.53626734
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851458922920793207, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7851458922920793207, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -836110871
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3305,11 +3269,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 679065726779455342, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 679065726779455342, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 679065726779455342, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: m_LocalPosition.z
