@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Value: -2.5
   contrast:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 92
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 0.7922517, g: 0.7905393, b: 0.8962264, a: 1}
