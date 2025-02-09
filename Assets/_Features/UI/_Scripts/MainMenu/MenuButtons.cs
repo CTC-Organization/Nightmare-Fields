@@ -8,7 +8,14 @@ public class MenuButtons : MonoBehaviour
     //Load Scene
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        try
+        {
+            SceneManager.LoadScene("Farm");
+        }
+        catch (System.Exception ex) {
+            Debug.LogError(ex.Message);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     //Quit Game

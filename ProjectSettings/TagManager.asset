@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Obstacle
+  - Light
+  - Player_Caio
+  - Player_Bullet
   layers:
   - Default
   - TransparentFX
@@ -43,11 +46,39 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 3260346235
+    locked: 0
   - name: Enemy
     uniqueID: 940447945
     locked: 0
   - name: Obstacle
     uniqueID: 220278879
     locked: 0
+  - name: Lights
+    uniqueID: 792955991
+    locked: 0
+  - name: Player
+    uniqueID: 3458856425
+    locked: 0
+  - name: Projectile
+    uniqueID: 2780797835
+    locked: 0
+  - name: Collectable
+    uniqueID: 1663410299
+    locked: 0
+  - name: Building
+    uniqueID: 1970894701
+    locked: 0
+  - name: VFX
+    uniqueID: 3485212945
+    locked: 0
+  - name: UI
+    uniqueID: 3823631611
+    locked: 0
+  - name: WallBack
+    uniqueID: 34114681
+    locked: 0
   m_RenderingLayers:
   - Default
+  - Lights
