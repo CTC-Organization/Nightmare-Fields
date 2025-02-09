@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused = false;
 
-    [SerializeField] private InputActionReference pauseResumePressed;
+    // [SerializeField] private InputActionReference pauseResumePressed;
 
     void Start()
     {
@@ -61,38 +61,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-    private void OnEnable()
-    {
-        pauseResumePressed.action.started += PauseResume;
-    }
-    private void OnDisable()
-    {
-        pauseResumePressed.action.started -= PauseResume;
-    }
+    // private void OnEnable()
+    // {
+    //     pauseResumePressed.action.started += PauseResume;
+    // }
+    // private void OnDisable()
+    // {
+    //     pauseResumePressed.action.started -= PauseResume;
+    // }
 
     /// <summary>
     /// Função responsável pelo attack
     /// </summary>
-    void PauseResume(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("apertou");
-        if (isPaused) // resume
-        {
-            Debug.Log("Resume");
-            if (pausePanel != null)
-                pausePanel.SetActive(false);
-            Time.timeScale = 1;
-            isPaused = false;
-        }
-        else if (!isPaused) // pause
-        {
-            Debug.Log("Pausou");
-            if (pausePanel != null)
-                pausePanel.SetActive(true);
-            Time.timeScale = 0;
-            isPaused = true;
-        }
-    }
+    // void PauseResume(InputAction.CallbackContext ctx)
+    // {
+    //     Debug.Log("apertou");
+    //     if (isPaused) // resume
+    //     {
+    //         Debug.Log("Resume");
+    //         if (pausePanel != null)
+    //             pausePanel.SetActive(false);
+    //         Time.timeScale = 1;
+    //         isPaused = false;
+    //     }
+    //     else if (!isPaused) // pause
+    //     {
+    //         Debug.Log("Pausou");
+    //         if (pausePanel != null)
+    //             pausePanel.SetActive(true);
+    //         Time.timeScale = 0;
+    //         isPaused = true;
+    //     }
+    // }
 }
