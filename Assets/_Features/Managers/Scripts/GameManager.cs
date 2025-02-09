@@ -49,6 +49,19 @@ public class GameManager : MonoBehaviour
             gameOverPanel.SetActive(true);
     }
 
+    public void CheckCollisionCount(int count)
+    {
+        if (count >= 5)
+        {
+            Debug.Log("Colisões atingiram 5! Pausando o jogo.");
+            Time.timeScale = 0;
+            if (pausePanel != null)
+                pausePanel.SetActive(true);
+            isPaused = true;
+        }
+    }
+
+
 
     private void OnEnable()
     {
