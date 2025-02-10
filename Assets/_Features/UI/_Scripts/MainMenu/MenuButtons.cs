@@ -10,7 +10,7 @@ public class MenuButtons : MonoBehaviour
     {
         try
         {
-            SceneManager.LoadScene("Farm");
+            SceneManager.LoadScene("TESTEObjetivo");
         }
         catch (System.Exception ex) {
             Debug.LogError(ex.Message);

@@ -1,11 +1,14 @@
 using System;
+using System.Linq;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int enemyCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public DayManager dayManager;
     public static GameManager instance;
@@ -15,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public GameObject pausePanel;
+    public GameObject wonPanel;
 
     public Health playerHealth;
 
@@ -26,6 +30,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         Time.timeScale = 1;
+
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
 
         playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
         dayManager = Instantiate(dayManager);
@@ -55,9 +61,22 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Colisões atingiram 5! Pausando o jogo.");
             Time.timeScale = 0;
-            if (pausePanel != null)
-                pausePanel.SetActive(true);
-            isPaused = true;
+            if (wonPanel != null)
+                wonPanel.SetActive(true);
+            //isPaused = true;
+        }
+    }
+
+    public void EnemyCount()
+    {
+        enemyCount--;
+        if (enemyCount <= 0)
+        {
+            Debug.Log("Colisões atingiram 5! Pausando o jogo.");
+            Time.timeScale = 0;
+            if (wonPanel != null)
+                wonPanel.SetActive(true);
+            //isPaused = true;
         }
     }
 
