@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 8026237430215474164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 940447945
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2601514537129177563, guid: 16dc5c5c7704e174b972f8de349ddbdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,9 +236,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 720
-  slowdownDistance: 2
+  slowdownDistance: 2.5
   pickNextWaypointDist: 0.44
-  endReachedDistance: 1.5
+  endReachedDistance: 2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -271,12 +271,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  attackCooldown: 10
-  hitBoxSize: {x: 0.97, y: 1.55, z: 0}
-  attackStartDistance: 0.75
+  attackCooldown: 1.5
+  hitBoxSize: {x: 1, y: 2.58, z: 1}
+  attackStartDistance: 2
   animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
   enemyMovement: {fileID: 7678263879996182864}
+  attackVFX: {fileID: 3173251329650498938, guid: 1e716ca46bce1184e95788f38bf4b2eb, type: 3}
 --- !u!114 &7007042320948797725
 MonoBehaviour:
   m_ObjectHideFlags: 0

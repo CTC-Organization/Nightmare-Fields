@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba229ba2340b5746b6c23d38181c51d, type: 3}
   m_Name: DayManager
   m_EditorClassIdentifier: 
-  tick: 24000
+  tick: 0
   seconds: 0
   mins: 0
   hours: 0
-  days: 0
-  activateLights: 1
+  days: 1
+  activateLights: 0
