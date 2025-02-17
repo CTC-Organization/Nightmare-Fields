@@ -60,9 +60,6 @@ MonoBehaviour:
   _deceleration: 10
   tr: {fileID: 9014741317739920163}
   currentHealth: 100
-  material: {fileID: 0}
-  defaultShader: {fileID: 0}
-  flashShader: {fileID: 0}
 --- !u!50 &7276464909973037443
 Rigidbody2D:
   serializedVersion: 5
@@ -173,8 +170,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -836110871
-  m_SortingLayer: 4
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: -7065929350358607293, guid: a3966cd9067fd18499fd2d97872b137e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -201,7 +198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDown: 0.25
   _bulletPrefab: {fileID: 7925154858442275306, guid: be609be04ed9ee6409f5ff81c66fc310, type: 3}
+  _bulletPrefabEspecial: {fileID: 7791501815116468490, guid: 23d394a330215c441a7b9965ac1b37a2, type: 3}
   _firePoint: {fileID: 1891087292501421015}
+  coolDownSpecial: 5
 --- !u!114 &-4238769052676208897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492fcc30e85cf1d4ca3e52fb9923764f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
+  startingHealth: 5
   isInvulnerable: 0
   invulnerabilityDurationOnHit: 2
   material: {fileID: 0}
@@ -262,7 +261,7 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -836110871
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.5

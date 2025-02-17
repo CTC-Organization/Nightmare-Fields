@@ -1436,15 +1436,11 @@ Transform:
   - {fileID: 263253482}
   - {fileID: 1032656936}
   - {fileID: 76446991}
-<<<<<<< HEAD
   - {fileID: 757850497}
   - {fileID: 1347883850}
   - {fileID: 158461000}
   - {fileID: 1580676899}
   - {fileID: 416065979}
-=======
-  - {fileID: 366166349}
->>>>>>> christian
   m_Father: {fileID: 1069541143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337858709

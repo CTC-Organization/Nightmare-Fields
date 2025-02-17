@@ -21,7 +21,7 @@ MonoBehaviour:
   lights: []
   targetIndicator: {fileID: 0}
   portals: []
-  tick: 6000
+  tick: 2000
   seconds: 0
   mins: 0
   hours: 6

@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         DayManager.dm.DayNightSystemUpdate();
-        Debug.Log(DayManager.dm.hours);
     }
 
     public void SkipToFightTime()

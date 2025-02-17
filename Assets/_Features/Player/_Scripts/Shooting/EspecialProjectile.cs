@@ -9,6 +9,7 @@ public class EspecialProjectile : MonoBehaviour
     [SerializeField] private float explosionRadius;
     private Rigidbody2D body;
     private float lifeTimer;
+    [SerializeField] private GameObject explosionVFX;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class EspecialProjectile : MonoBehaviour
         {
             // Aplica dano ao zumbi atingido
             ApplyDamage(collision.gameObject);
+            Instantiate(explosionVFX, transform.position, Quaternion.identity);
 
             // Aplica dano aos zumbis pr�ximos
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);

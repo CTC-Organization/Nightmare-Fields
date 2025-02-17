@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPortal (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8743271224605306330, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9
@@ -214,11 +218,6 @@ Transform:
   - {fileID: 233728162}
   m_Father: {fileID: 1588659077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &96225644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4209434380223456070, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-  m_PrefabInstance: {fileID: 3359305590121560333}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109952838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +1004,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607363396}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
@@ -1113,6 +1112,10 @@ PrefabInstance:
     - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_Name
       value: EnemyPortal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743271224605306330, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1239,7 +1242,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1034621061
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -7357,7 +7360,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607363396}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -7645,7 +7648,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 34114681
-  m_SortingLayer: 11
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -8101,7 +8104,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607363396}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -8234,7 +8237,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607363396}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -9396,7 +9399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1505595997
 Transform:
   m_ObjectHideFlags: 0
@@ -9783,51 +9786,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1 &1607363394
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1607363395}
-  - component: {fileID: 1607363396}
-  m_Layer: 0
-  m_Name: MenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1607363395
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607363394}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1851108231}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1607363396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607363394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422f9f976e89e8b4d9bfc7ee5582c7e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 666509990}
 --- !u!1 &1615411226
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,6 +10035,10 @@ PrefabInstance:
     - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_Name
       value: EnemyPortal (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743271224605306330, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10412,7 +10374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607363396}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -10491,8 +10453,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1607363395}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1851108232
@@ -10848,7 +10809,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.75
+  m_fontSize: 19.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11086,66 +11047,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971101098}
   m_CullTransparentMesh: 1
---- !u!114 &1997755874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96225644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 5f00dabb0b301564b95c45f5ad1abb5a, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 712247d3-f6f6-4a52-8e3e-c68f7877a7aa
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ead19ebc-47d1-4025-a632-9aea90f2a5eb
-    m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4209434380223456070, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 62520fb3-3b21-476d-835d-9aad158be34a
-    m_ActionName: 'GameControl/PauseResume[/Keyboard/p,/Keyboard/escape,/Keyboard/enter]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1997755875 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
   m_PrefabInstance: {fileID: 3359305590121560333}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96225644}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19f356e21a69e846a2a4df84128ac53, type: 3}
@@ -11229,7 +11136,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1034621061
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -12122,7 +12029,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.8
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12203,28 +12110,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1950355766}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-      propertyPath: farmSceneName
-      value: Testefazendinha2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 109952838}
-    - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-      propertyPath: arenaSceneName
-      value: Testeareninha2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-      propertyPath: dayManagerOriginal
-      value: 
-      objectReference: {fileID: 11400000, guid: 8a6f920e2206311448b2235e367ea3ce, type: 2}
-    - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-      propertyPath: pauseResumePressed
-      value: 
-      objectReference: {fileID: 890117548434899316, guid: 5f00dabb0b301564b95c45f5ad1abb5a, type: 3}
     - target: {fileID: 4209434380223456070, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209434380223456070, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8176631486182867376, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12269,10 +12164,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4209434380223456070, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1997755874}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
 --- !u!1001 &4136498259672446978
 PrefabInstance:
@@ -12285,6 +12177,10 @@ PrefabInstance:
     - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_Name
       value: EnemyPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079729559956406172, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743271224605306330, guid: 69518bd8057037742a5cb9f93d9895de, type: 3}
       propertyPath: m_LocalPosition.x

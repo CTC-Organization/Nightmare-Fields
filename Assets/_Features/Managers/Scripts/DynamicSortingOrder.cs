@@ -14,6 +14,6 @@ public class DynamicSortingOrder : MonoBehaviour
     {
         // Atualiza o Sorting Order com base na posição Y
         // Quanto maior a posição Y, menor o Sorting Order
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
+        // spriteRenderer.sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
     }
 }
