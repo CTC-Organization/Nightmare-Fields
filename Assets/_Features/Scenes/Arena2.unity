@@ -89970,7 +89970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2303751957345154772, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: attackCooldown
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2303751957345154772, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: attackStartDistance
