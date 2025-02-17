@@ -9,6 +9,10 @@ TagManager:
   - Light
   - Player_Caio
   - Player_Bullet
+  - Farmtile
+  - Seed
+  - Crops1
+  - Crops2
   layers:
   - Default
   - TransparentFX
