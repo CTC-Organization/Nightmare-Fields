@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour
 {
     [Header("Configurações da Wave")]
     public GameObject enemyPrefab;      // Prefab do inimigo
+    public GameObject bossPrefab;
     public Transform[] spawnPoints;     // Pontos de spawn
     public float spawnDelay = 0.5f;     // Delay entre os spawns
 
@@ -19,6 +20,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         currentDay = DayManager.dm.days;
+    
         Debug.Log("currentDay :" + currentDay + "\nDayManager.dm.days: " + DayManager.dm.days);
         StartCoroutine(SpawnWave(currentDay));
     }
@@ -32,6 +34,14 @@ public class WaveManager : MonoBehaviour
         {
             SpawnEnemy();
             yield return new WaitForSeconds(spawnDelay);
+        }
+
+        if (currentDay == 5) // corrigir futuramente
+        {
+
+            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            GameObject enemy = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+            currentEnemies.Add(enemy);
         }
     }
 
