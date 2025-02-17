@@ -9,10 +9,14 @@ TagManager:
   - Light
   - Player_Caio
   - Player_Bullet
+<<<<<<< HEAD
   - Farmtile
   - Seed
   - Crops1
   - Crops2
+=======
+  - Player_Especial_Bullet
+>>>>>>> caio2
   layers:
   - Default
   - TransparentFX

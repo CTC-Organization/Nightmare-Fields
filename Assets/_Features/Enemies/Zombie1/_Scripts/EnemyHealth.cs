@@ -60,5 +60,11 @@ public class EnemyHealth : MonoBehaviour
 
             //GameManager.instance.CheckCollisionCount(collisionCount); // Verifica no GameManager
         }
+        else if (collision.CompareTag("Player_Especial_Bullet"))
+        {
+            Debug.Log($"Enemy hit by Player_EspecialBullet: {collision.name}");
+            Destroy(collision.gameObject);
+            TakeDamage(2);
+        }
     }
 }
