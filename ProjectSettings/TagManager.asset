@@ -9,6 +9,7 @@ TagManager:
   - Light
   - Player_Caio
   - Player_Bullet
+  - Player_Especial_Bullet
   layers:
   - Default
   - TransparentFX
