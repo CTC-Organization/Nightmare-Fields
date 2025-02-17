@@ -39,6 +39,8 @@ public class EspecialProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
+            Instantiate(explosionVFX, collision.transform.position, Quaternion.identity);
+
             // Aplica dano ao zumbi atingido
             ApplyDamage(collision.gameObject);
 
@@ -48,7 +50,6 @@ public class EspecialProjectile : MonoBehaviour
             {
                 if (hitCollider.CompareTag("Enemy"))
                 {
-                    Instantiate(explosionVFX, transform.position, Quaternion.identity);
                     ApplyDamage(hitCollider.gameObject);
                 }
             }

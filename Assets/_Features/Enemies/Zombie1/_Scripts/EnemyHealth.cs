@@ -49,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-         Debug.Log("trigger");
+        Debug.Log("trigger");
         if (collision.CompareTag("Player_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_Bullet: {collision.name}");
@@ -64,7 +64,7 @@ public class EnemyHealth : MonoBehaviour
         else if (collision.CompareTag("Player_Especial_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_EspecialBullet: {collision.name}");
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
             TakeDamage(2);
         }
     }
