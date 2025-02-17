@@ -10,6 +10,7 @@ TagManager:
   - Player_Caio
   - Player_Bullet
 <<<<<<< HEAD
+<<<<<<< HEAD
   - Farmtile
   - Seed
   - Crops1
@@ -17,6 +18,16 @@ TagManager:
 =======
   - Player_Especial_Bullet
 >>>>>>> caio2
+=======
+  - TargetIndicator
+  - Portal
+  - PostProcessingVolume
+  - HourDisplay
+  - DayDisplay
+  - GameOverPanel
+  - PausePanel
+  - WonPanel
+>>>>>>> christian
   layers:
   - Default
   - TransparentFX

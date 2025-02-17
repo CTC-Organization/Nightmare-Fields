@@ -12,19 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba229ba2340b5746b6c23d38181c51d, type: 3}
   m_Name: DayManager
   m_EditorClassIdentifier: 
-  startNightHour: 18
-  startFightingHour: 19
-  startDayHour: 6
-  hourDisplay: {fileID: 0}
-  dayDisplay: {fileID: 0}
-  ppv: {fileID: 0}
-  lights: []
-  targetIndicator: {fileID: 0}
-  portals: []
-  tick: 6000
+  tick: 0
   seconds: 0
   mins: 0
-  hours: 6
+  hours: 0
   days: 1
   activateLights: 0
-  activatePortals: 0

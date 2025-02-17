@@ -13,6 +13,8 @@ public class EnemyAttack : MonoBehaviour
 
     [SerializeField] private Vector3 attackOrigin; // Dist�ncia de ataque
     [SerializeField] private EnemyMovement enemyMovement;
+
+    [SerializeField] private GameObject attackVFX;
     private float lastAttackTime;
     private GameObject target;
 
@@ -38,18 +40,10 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        if (target != null)
-        {
+        Gizmos.color = Color.black;
 
-            Gizmos.DrawWireCube(attackOrigin, hitBoxSize);
-        }
-        else
-        {
-            Vector3 directionStart = attackOrigin * attackStartDistance;
+        Gizmos.DrawWireCube(attackStartDistance * attackOrigin, hitBoxSize);
 
-            Gizmos.DrawWireCube(directionStart, hitBoxSize);
-        }
 
     }
 
@@ -64,8 +58,9 @@ public class EnemyAttack : MonoBehaviour
 
         attackOrigin = transform.position + directionToTarget * attackStartDistance;
 
-        animator.SetTrigger("Attack");
-
+        // animator.SetTrigger("Attack");
+        Instantiate(attackVFX, target.transform.position, Quaternion.identity);
+        Debug.Log("Chris Ataque do inimigo");
         LayerMask targetMask = 1 << target.layer;
         HitType hitType = HitBoxCreate(targetMask, attackOrigin);
 
