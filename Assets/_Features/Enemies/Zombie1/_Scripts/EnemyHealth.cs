@@ -49,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+         Debug.Log("trigger");
         if (collision.CompareTag("Player_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_Bullet: {collision.name}");

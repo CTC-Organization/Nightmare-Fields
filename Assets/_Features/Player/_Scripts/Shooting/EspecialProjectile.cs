@@ -9,6 +9,7 @@ public class EspecialProjectile : MonoBehaviour
     [SerializeField] private float explosionRadius;
     private Rigidbody2D body;
     private float lifeTimer;
+    [SerializeField] private GameObject explosionVFX;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class EspecialProjectile : MonoBehaviour
             {
                 if (hitCollider.CompareTag("Enemy"))
                 {
+                    Instantiate(explosionVFX, transform.position, Quaternion.identity);
                     ApplyDamage(hitCollider.gameObject);
                 }
             }

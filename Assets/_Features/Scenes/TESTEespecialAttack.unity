@@ -10916,7 +10916,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.75
+  m_fontSize: 19.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11901,8 +11901,20 @@ PrefabInstance:
       propertyPath: attackStartDistance
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3098819285812487074, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098819285812487074, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3813314912498867769, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7007042320948797725, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
+      propertyPath: startingEnemyHealth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8026237430215474164, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
@@ -12080,7 +12092,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.85
+  m_fontSize: 19.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
