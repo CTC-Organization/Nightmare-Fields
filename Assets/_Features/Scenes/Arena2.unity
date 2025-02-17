@@ -9946,7 +9946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4238769052676208897, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: startingHealth
-      value: 300
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1089460590062328332, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: _bulletPrefabEspecial
