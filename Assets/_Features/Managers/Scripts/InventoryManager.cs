@@ -20,14 +20,17 @@ public class InventoryManager : MonoBehaviour
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < 8)
             {
-                ChangeSelectedSlot(number - 1);
+                int n = number - 1;
+                Debug.Log("trocou: "+n);
+                ChangeSelectedSlot(n);
+
             }
         }
     }
 
     public void ChangeSelectedSlot(int newValue)
     {
-        if(selectedSlot >= 0) 
+        if (selectedSlot >= 0)
         {
             InventorySlots[selectedSlot].Deselect();
         }
@@ -35,7 +38,7 @@ public class InventoryManager : MonoBehaviour
         InventorySlots[newValue].Select();
         selectedSlot = newValue;
     }
-    
+
     public bool AddNewItem(Item item)
     {
         for (int i = 0; i < InventorySlots.Length; i++)
@@ -73,16 +76,17 @@ public class InventoryManager : MonoBehaviour
     {
         InventorySlot slot = InventorySlots[selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-        if(itemInSlot != null)
+        if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
-            if (use == true) 
+            if (use == true)
             {
                 itemInSlot.count--;
                 if (itemInSlot.count <= 0)
                 {
                     Destroy(itemInSlot.gameObject);
-                } else
+                }
+                else
                 {
                     itemInSlot.RefreshCount();
                 }
