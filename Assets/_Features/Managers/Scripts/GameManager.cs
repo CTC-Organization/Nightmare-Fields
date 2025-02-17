@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (instance == null) instance = this;
         Time.timeScale = 1;
 
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
+        // enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
 
         playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
         dayManager = Instantiate(dayManager);
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (playerHealth.currentHealth <= 0) GameOver();
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
+        Debug.Log($"conategm {enemyCount}");
     }
     void FixedUpdate()
     {
@@ -57,9 +59,9 @@ public class GameManager : MonoBehaviour
 
     public void CheckCollisionCount(int count)
     {
-        if (count >= 5)
+        if (count >= 10)
         {
-            Debug.Log("Colisões atingiram 5! Pausando o jogo.");
+            Debug.Log("Colisões atingiram 10! Pausando o jogo.");
             Time.timeScale = 0;
             if (wonPanel != null)
                 wonPanel.SetActive(true);
