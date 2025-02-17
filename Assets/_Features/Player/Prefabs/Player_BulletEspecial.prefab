@@ -178,3 +178,4 @@ MonoBehaviour:
   speed: 35
   lifeTime: 5
   explosionRadius: 2
+  explosionVFX: {fileID: 3283013011807903446, guid: 42a7b14d2704ad443b5b4a115e20a9b3, type: 3}

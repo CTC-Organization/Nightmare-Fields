@@ -60,7 +60,7 @@ public class IntroductionDialogue : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("TESTEInventarioDialogo");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 }

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public bool fighting = false;
     public bool fightIsToStart = false;
     public Vector3 spawnPosition;
+    public bool isOnFarm = true;
 
     void Start()
     {

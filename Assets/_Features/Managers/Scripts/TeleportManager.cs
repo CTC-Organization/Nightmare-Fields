@@ -14,6 +14,7 @@ public class TeleportManager
         {
             GameManager.instance.fightIsToStart = false;
             GameManager.instance.fighting = false;
+            GameManager.instance.isOnFarm = true;
         }
         else if (sceneName == GameManager.instance.arenaSceneName)
         {
@@ -21,6 +22,8 @@ public class TeleportManager
             GameManager.instance.hourDisplay.text = "";
             GameManager.instance.fightIsToStart = false;
             GameManager.instance.fighting = true;
+            GameManager.instance.isOnFarm = false;
+
         }
 
 
@@ -32,7 +35,7 @@ public class TeleportManager
         GameManager.instance.UpdateReferences();
         if (scene.name == GameManager.instance.farmSceneName)
         {
-            Debug.Log("Farm Scene Loaded (name):"+ scene.name);
+            Debug.Log("Farm Scene Loaded (name):" + scene.name);
             DayManager.dm.UpdateReferencesToFarm();
         }
         SceneManager.sceneLoaded -= OnSceneLoaded;
