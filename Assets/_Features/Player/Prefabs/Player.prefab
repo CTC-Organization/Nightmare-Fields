@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8728872444391858186}
   - component: {fileID: 1519973318291676395}
   - component: {fileID: 7082862616692250247}
+  - component: {fileID: 2565333225362033715}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -60,9 +61,6 @@ MonoBehaviour:
   _deceleration: 10
   tr: {fileID: 9014741317739920163}
   currentHealth: 100
-  material: {fileID: 0}
-  defaultShader: {fileID: 0}
-  flashShader: {fileID: 0}
 --- !u!50 &7276464909973037443
 Rigidbody2D:
   serializedVersion: 5
@@ -174,7 +172,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -836110871
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 9
   m_Sprite: {fileID: -7065929350358607293, guid: a3966cd9067fd18499fd2d97872b137e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -201,7 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolDown: 0.25
   _bulletPrefab: {fileID: 7925154858442275306, guid: be609be04ed9ee6409f5ff81c66fc310, type: 3}
+  _bulletPrefabEspecial: {fileID: 0}
   _firePoint: {fileID: 1891087292501421015}
+  coolDownSpecial: 5
 --- !u!114 &-4238769052676208897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +501,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.69926953, y: 1.5203563}
   m_EdgeRadius: 0
+--- !u!114 &2565333225362033715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185183857724772492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5173ee85c22f8d24d96cca660f3a0b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4418388030447015251
 GameObject:
   m_ObjectHideFlags: 0
