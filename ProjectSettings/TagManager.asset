@@ -9,6 +9,14 @@ TagManager:
   - Light
   - Player_Caio
   - Player_Bullet
+  - TargetIndicator
+  - Portal
+  - PostProcessingVolume
+  - HourDisplay
+  - DayDisplay
+  - GameOverPanel
+  - PausePanel
+  - WonPanel
   layers:
   - Default
   - TransparentFX
