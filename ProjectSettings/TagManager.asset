@@ -14,6 +14,14 @@ TagManager:
   - Crops1
   - Crops2
   - Player_Especial_Bullet
+  - TargetIndicator
+  - Portal
+  - PostProcessingVolume
+  - HourDisplay
+  - DayDisplay
+  - GameOverPanel
+  - PausePanel
+  - WonPanel
   layers:
   - Default
   - TransparentFX

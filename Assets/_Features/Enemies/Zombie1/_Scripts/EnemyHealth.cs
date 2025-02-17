@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
-        if (isDead) return;
+        if (isDead || this == null) return;
         Debug.Log("Inimigo " + name + " morreu");
         GameManager.instance.EnemyCount();
         isDead = true;

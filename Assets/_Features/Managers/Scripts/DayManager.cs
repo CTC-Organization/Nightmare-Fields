@@ -11,11 +11,16 @@ using System.Linq; // used to access the volume component
 [CreateAssetMenu(fileName = "DayManager", menuName = "ScriptableObjects/DayManager", order = 1)]
 public class DayManager : ScriptableObject
 {
+    [SerializeField] private int startNightHour;
+    [SerializeField] private int startFightingHour;
+    [SerializeField] public int startDayHour;
     private GameManager gm;
-    private TextMeshProUGUI hourDisplay; // Display Time
-    private TextMeshProUGUI dayDisplay; // Display Day
-    private Volume ppv; // this is the post processing volume
-    private GameObject[] lights;
+    public TextMeshProUGUI hourDisplay; // Display Time
+    public TextMeshProUGUI dayDisplay; // Display Day
+    public Volume ppv; // this is the post processing volume
+    public GameObject[] lights;
+    public TargetIndicator targetIndicator;
+    public GameObject[] portals;
 
     public float tick; // Increasing the tick, increases second rate
     public float seconds;
@@ -24,20 +29,111 @@ public class DayManager : ScriptableObject
     public int days = 1;
 
     public bool activateLights; // checks if lights are on
+    public bool activatePortals;
+    public static DayManager dm;
 
     public void Initialize()
     {
+
+
         ppv = GameManager.instance.ppv;
         hourDisplay = GameManager.instance.hourDisplay; // Display Time
         dayDisplay = GameManager.instance.dayDisplay;
 
         lights = GameObject.FindGameObjectsWithTag("Light");
-
         //Debug.Log("Lights: "+ lights.Length);
+        portals = GameObject.FindGameObjectsWithTag("Portal"); // pegando portais - (toda cena deve ter um portal)
+        ClosePortalsOnScene();
+        dm = Instantiate(this);
+    }
+    public void UpdateReferencesToFarm()
+    {
+        portals = GameObject.FindGameObjectsWithTag("Portal");
+        lights = GameObject.FindGameObjectsWithTag("Light");
+        ResetTimerToNewDay();
+        ClosePortalsOnScene();
+    }
+
+
+    public void ResetTimerToNewDay()
+    {
+        hours = startDayHour; // comecando o dia as 5da mnha
+        mins = 0;
+        seconds = 0;
+        days += 1;
+    }
+
+    public void SkipToFightTime()
+    {
+        hours = 19;
+        mins = 0;
+        seconds = 0;
+    }
+
+    public void OpenPortalsOnScene()
+    {
+        for (int i = 0; i < portals.Length; i++)
+        {
+            portals[i].SetActive(true); // shut them off
+        }
+        activatePortals = true;
+
+    }
+
+    public void ClosePortalsOnScene()
+    {
+
+        for (int i = 0; i < portals.Length; i++)
+        {
+            portals[i].SetActive(false); // shut them off
+        }
+        activatePortals = false;
+    }
+
+
+    public void DayNightSystemUpdate()
+    {
+        if (GameManager.instance.fighting == true) // não deixar descer caso entrou na segunda vez do loop após trocar para true
+        {
+            return;
+        }
+
+        if (hours == startDayHour && GameManager.instance.fighting == false)
+        {
+            // portals = GameObject.FindGameObjectsWithTag("Portal"); // pegando portais - (toda cena deve ter um portal)
+            ClosePortalsOnScene();
+            Debug.Log("Fechou portais");
+        }
+        else if (hours >= startNightHour && GameManager.instance.fightIsToStart == false && GameManager.instance.fighting == false) // pular para manha e o player e teletransportado as 19
+        {
+            // portals = GameObject.FindGameObjectsWithTag("Portal");
+            OpenPortalsOnScene();
+            Debug.Log("Atualizou portais");
+            GameManager.instance.fightIsToStart = true;
+            if (targetIndicator == null)
+            {
+                targetIndicator = GameObject.FindWithTag("TargetIndicator").GetComponent<TargetIndicator>();
+            }
+            Debug.Log("tentando ativar targetIndicator");
+
+            targetIndicator.gameObject.SetActive(true);
+            targetIndicator.activated = true;
+            Debug.Log("target indicator foi Ativado");
+
+        }
+        else if (hours >= startFightingHour && GameManager.instance.fighting == false) //24 hr = 1 day
+        {
+            GameManager.instance.tm.Teleport(GameManager.instance.arenaSceneName);
+            return;
+        }
+
+        CalcTime(); // calculate time
+        DisplayTime(); // display time
     }
 
     public void CalcTime() // Used to calculate sec, min and hours
     {
+
         seconds += Time.fixedDeltaTime * tick; // multiply time between fixed update by tick
 
         if (seconds >= 60) // 60 sec = 1 min
@@ -55,15 +151,16 @@ public class DayManager : ScriptableObject
         if (hours >= 24) //24 hr = 1 day
         {
             hours = 0;
-            days += 1;
+            // days += 1;
         }
         ControlPPV(); // changes post processing volume after calculation
+
     }
 
     public void ControlPPV() // used to adjust the post processing slider.
     {
         //ppv.weight = 0;
-        if (hours >= 18 && hours < 19) // dusk at 21:00 / 9pm    -   until 22:00 / 10pm
+        if (hours >= startNightHour && hours < startFightingHour) // dusk at 21:00 / 9pm    -   until 22:00 / 10pm
         {
             ppv.weight = (float)mins / 60; // since dusk is 1 hr, we just divide the mins by 60 which will slowly increase from 0 - 1 
             //for (int i = 0; i < stars.Length; i++)
@@ -85,7 +182,7 @@ public class DayManager : ScriptableObject
         }
 
 
-        if (hours >= 5 && hours < 6) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
+        if (hours >= startDayHour && hours < startDayHour + 1) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
             ppv.weight = 1 - (float)mins / 60; // we minus 1 because we want it to go from 1 - 0
             //for (int i = 0; i < stars.Length; i++)
@@ -108,8 +205,11 @@ public class DayManager : ScriptableObject
 
     public void DisplayTime() // Shows time and day in ui
     {
-
+        if (hourDisplay == null || dayDisplay == null)
+        {
+            return;
+        }
         hourDisplay.text = string.Format("{0:00}:{1:00}", hours, mins); // The formatting ensures that there will always be 0's in empty spaces
-        dayDisplay.text = "Day: " + days; // display day counter
+        dayDisplay.text = $"Day {days}"; // display day counter
     }
 }

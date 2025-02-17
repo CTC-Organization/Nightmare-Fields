@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _movement;
     private Vector2 _currentVelocity;
 
-    AudioSource audioSource; 
+    AudioSource audioSource;
 
     private bool isRunning = false;
     float x;
@@ -36,25 +36,19 @@ public class PlayerMovement : MonoBehaviour
     private Health health;
     public float currentHealth = 100f;
 
-    [Header("Configura��es de VFX")]
-    [Tooltip("Material para tratar shader")]
-    [SerializeField]
-    private Material material;      // Material associado ao SpriteRenderer
-    [SerializeField]
-    [Tooltip("Salva shader original caso se perca")] private Shader defaultShader;  // Shader padr�o do material
-    [SerializeField]
-    [Tooltip("Shader que simula piscada ao levar hit")] private Shader flashShader;
-    [Tooltip("Guarda rotina de piscadas por segundo ao ser hitado")] private Coroutine flashRoutine;
+
+    private Material material;   
+    private Shader defaultShader; 
+    private Shader flashShader;
+    private Coroutine flashRoutine;
     // shader pode ser melhorada futuramente
-
-
     private void Awake()
     {
         health = GetComponent<Health>();
         _rb = GetComponent<Rigidbody2D>();
     }
     private void Start()
-    {   
+    {
 
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
@@ -65,14 +59,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
         ProccessInputs();
         Animate();
-        if(input.x < 0 && facingLeft || input.x > 0 && !facingLeft)
+        if (input.x < 0 && facingLeft || input.x > 0 && !facingLeft)
         {
             Flip();
         }
-        
+
         if (isDashing)
         {
             return;
@@ -80,23 +74,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-        isRunning = true;
+            isRunning = true;
         }
         if (Input.GetKeyUp(KeyCode.F))
         {
-        isRunning = false;
+            isRunning = false;
         }
 
         // Atualiza o parâmetro do Animator
         anim.SetBool("IsRunning", isRunning);
 
-         x = Input.GetAxis("Horizontal") *  _moveSpeed;
+        x = Input.GetAxis("Horizontal") * _moveSpeed;
         _rb.linearVelocity = new Vector2(x, _rb.linearVelocity.y);
 
         if (_rb.linearVelocity.x != 0)
         {
             if (!audioSource.isPlaying)
-            {   
+            {
                 audioSource.Play();
             }
         }
@@ -125,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
-    
+
     void ProccessInputs()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if((moveX == 0 && moveY == 0) && (input.x != 0 || input.y != 0))
+        if ((moveX == 0 && moveY == 0) && (input.x != 0 || input.y != 0))
         {
             lastMoveDirection = input;
         }
@@ -143,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Animate()
-    {   
+    {
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("MoveMagnitude", input.magnitude);
@@ -168,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (health.invulnerableCoroutine != null) StopCoroutine(health.invulnerableCoroutine);
         health.invulnerableCoroutine = StartCoroutine(health.InvulnerabilityCoroutine(dashingTime));
-   
+
 
 
         // Salva gravidade atual
@@ -249,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-    
+
 
 
 

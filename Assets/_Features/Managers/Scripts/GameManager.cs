@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using TMPro;
 using Unity.Collections;
@@ -10,7 +11,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int enemyCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public DayManager dayManager;
+    public  DayManager dayManagerOriginal;
+    public string arenaSceneName;
+
+    public string farmSceneName;
     public static GameManager instance;
     public Volume ppv; // this is the post processing volume
     public TextMeshProUGUI hourDisplay; // Display Time
@@ -23,31 +27,78 @@ public class GameManager : MonoBehaviour
     public Health playerHealth;
 
     public bool isPaused = false;
+    public bool canComeBackToFarm = false;
 
     // [SerializeField] private InputActionReference pauseResumePressed;
+    public TeleportManager tm = new();
+    public bool fighting = false;
+    public bool fightIsToStart = false;
+    public Vector3 spawnPosition;
 
     void Start()
     {
-        if (instance == null) instance = this;
-        Time.timeScale = 1;
+        if (instance == null)
+        {
+            Debug.Log("Iniciou GameManager");
+            instance = this;
+            Time.timeScale = 1;
+            DontDestroyOnLoad(instance);
+            DayManager.dm = Instantiate(dayManagerOriginal);
+            DayManager.dm.Initialize();
+            UpdateReferences();
+        }
+    }
+    public void UpdateReferences()
+    {
 
         // enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
-
+        // spawnPosition = GameObject.FindWithTag("SpawnPosition").GetComponent<Vector3>();
         playerHealth = GameObject.FindWithTag("Player").GetComponent<Health>();
-        dayManager = Instantiate(dayManager);
-        dayManager.Initialize();
+        ppv = GameObject.FindWithTag("PostProcessingVolume").GetComponent<Volume>();
+        hourDisplay = GameObject.FindWithTag("HourDisplay").GetComponent<TextMeshProUGUI>();
+        dayDisplay = GameObject.FindWithTag("DayDisplay").GetComponent<TextMeshProUGUI>();
+        gameOverPanel = GameObject.FindWithTag("GameOverPanel");
+        pausePanel = GameObject.FindWithTag("PausePanel");
+        wonPanel = GameObject.FindWithTag("WonPanel");
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
+
+        pausePanel.SetActive(false);
+        wonPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+
+        DayManager.dm.ppv = ppv;
+        DayManager.dm.hourDisplay = hourDisplay;
+        DayManager.dm.dayDisplay = dayDisplay;
     }
     void Update()
     {
-        if (playerHealth.currentHealth <= 0) GameOver();
+        // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
         Debug.Log($"conategm {enemyCount}");
+        if (canComeBackToFarm)
+        {
+            canComeBackToFarm = false;
+            tm.Teleport(farmSceneName);
+        }
+        else if (playerHealth == null)
+        {
+            return;
+        }
+        else if (playerHealth.currentHealth <= 0) GameOver();
     }
     void FixedUpdate()
     {
-        dayManager.CalcTime();
-        dayManager.DisplayTime();
+        if (fighting == true)
+        {
+            return;
+        }
+        DayManager.dm.DayNightSystemUpdate();
+        Debug.Log(DayManager.dm.hours);
+    }
 
+    public void SkipToFightTime()
+    {
+        DayManager.dm.SkipToFightTime();
     }
 
     public void GameOver()
@@ -74,14 +125,20 @@ public class GameManager : MonoBehaviour
         enemyCount--;
         if (enemyCount <= 0)
         {
-            Debug.Log("Colisões atingiram 5! Pausando o jogo.");
-            Time.timeScale = 0;
             if (wonPanel != null)
                 wonPanel.SetActive(true);
-            //isPaused = true;
+            Debug.Log("ENemy count: " + enemyCount);
+            StartCoroutine(WaitToWin());
         }
     }
+    IEnumerator WaitToWin()
+    {
+        yield return new WaitForSeconds(3f);
 
+        if (wonPanel != null)
+            wonPanel.SetActive(false);
+        canComeBackToFarm = true;
+    }
     // private void OnEnable()
     // {
     //     pauseResumePressed.action.started += PauseResume;
