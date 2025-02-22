@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24823212148049a4f95244a8ac584fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingEnemyHealth: 1
+  startingEnemyHealth: 2
 --- !u!95 &20736263090893180
 Animator:
   serializedVersion: 7

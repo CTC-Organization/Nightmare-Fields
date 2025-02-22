@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 
 public class WaveManager : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class WaveManager : MonoBehaviour
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         currentEnemies.Add(enemy);
+
+        enemy.GetComponent<AIPath>().maxSpeed += .5f * currentDay; // dia 1 - 2.5f, 2- 3f, 3- 3.5f, 4 - 4f,5- 4.5f,6- 5f,7- 5.5f, 7-6f, 8-6.5f ,9 - 7, 10 - 7.5f
     }
 
     int GetEnemiesForDay(int day)
