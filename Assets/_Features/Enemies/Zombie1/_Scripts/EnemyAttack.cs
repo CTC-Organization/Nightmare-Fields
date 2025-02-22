@@ -13,6 +13,9 @@ public class EnemyAttack : MonoBehaviour
 
     [SerializeField] private Vector3 attackOrigin; // Dist�ncia de ataque
     [SerializeField] private EnemyMovement enemyMovement;
+    [SerializeField] private EnemyController ec;
+
+
 
     [SerializeField] private GameObject attackVFX;
     private float lastAttackTime;
@@ -20,13 +23,14 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start()
     {
+        ec = GetComponent<EnemyController>();
         target = GameObject.FindWithTag("Player");
     }
 
     private void Update()
     {
 
-        if (enemyMovement.isDying)
+        if (ec.isDying)
         {
             if (attackRoutine != null) StopAllCoroutines();
             return;

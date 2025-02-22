@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
     {
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
-        Debug.Log($"conategm {enemyCount}");
         if (canComeBackToFarm)
         {
             canComeBackToFarm = false;
@@ -94,7 +93,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         DayManager.dm.DayNightSystemUpdate();
-        Debug.Log(DayManager.dm.hours);
     }
 
     public void SkipToFightTime()

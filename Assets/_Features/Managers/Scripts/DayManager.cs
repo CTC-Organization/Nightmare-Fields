@@ -34,8 +34,6 @@ public class DayManager : ScriptableObject
 
     public void Initialize()
     {
-
-
         ppv = GameManager.instance.ppv;
         hourDisplay = GameManager.instance.hourDisplay; // Display Time
         dayDisplay = GameManager.instance.dayDisplay;
@@ -65,7 +63,7 @@ public class DayManager : ScriptableObject
 
     public void SkipToFightTime()
     {
-        hours = 19;
+        hours = startFightingHour;
         mins = 0;
         seconds = 0;
     }
@@ -102,6 +100,7 @@ public class DayManager : ScriptableObject
         {
             // portals = GameObject.FindGameObjectsWithTag("Portal"); // pegando portais - (toda cena deve ter um portal)
             ClosePortalsOnScene();
+            activateLights = true; // sempre que for de manhã dizer que luzes estão acesas para apagar caso estejam acesas
             Debug.Log("Fechou portais");
         }
         else if (hours >= startNightHour && GameManager.instance.fightIsToStart == false && GameManager.instance.fighting == false) // pular para manha e o player e teletransportado as 19
@@ -123,6 +122,7 @@ public class DayManager : ScriptableObject
         }
         else if (hours >= startFightingHour && GameManager.instance.fighting == false) //24 hr = 1 day
         {
+            activateLights = true;
             GameManager.instance.tm.Teleport(GameManager.instance.arenaSceneName);
             return;
         }
@@ -162,7 +162,7 @@ public class DayManager : ScriptableObject
         //ppv.weight = 0;
         if (hours >= startNightHour && hours < startFightingHour) // dusk at 21:00 / 9pm    -   until 22:00 / 10pm
         {
-            ppv.weight = (float)mins / 60; // since dusk is 1 hr, we just divide the mins by 60 which will slowly increase from 0 - 1 
+            ppv.weight = (float)mins / 120; // since dusk is 1 hr, we just divide the mins by 60 which will slowly increase from 0 - 1 
             //for (int i = 0; i < stars.Length; i++)
             //{
             //    stars[i].color = new Color(stars[i].color.r, stars[i].color.g, stars[i].color.b, (float)mins / 60); // change the alpha value of the stars so they become visible
@@ -184,7 +184,7 @@ public class DayManager : ScriptableObject
 
         if (hours >= startDayHour && hours < startDayHour + 1) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
-            ppv.weight = 1 - (float)mins / 60; // we minus 1 because we want it to go from 1 - 0
+            ppv.weight = .5f - (float)mins / 120; // we minus 1 because we want it to go from 1 - 0
             //for (int i = 0; i < stars.Length; i++)
             //{
             //    stars[i].color = new Color(stars[i].color.r, stars[i].color.g, stars[i].color.b, 1 - (float)mins / 60); // make stars invisible
