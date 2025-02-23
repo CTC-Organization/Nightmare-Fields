@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class IntroductionDialogue : MonoBehaviour
 {
     public GameObject dialoguePanel;
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
     public string[] dialogue;
     private int index;
 
@@ -60,7 +60,7 @@ public class IntroductionDialogue : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("TESTEInventarioDialogo");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 }
