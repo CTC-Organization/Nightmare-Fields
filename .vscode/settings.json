@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2va Jogo-1-CTC.sln"
+    "dotnet.defaultSolution": "Nightmare-Fields.sln"
 }
