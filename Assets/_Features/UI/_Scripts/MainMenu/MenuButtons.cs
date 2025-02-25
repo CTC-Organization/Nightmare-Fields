@@ -6,13 +6,19 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     //Load Scene
+    [SerializeField] string tutorialSceneName = "TESTEIntroducao";
     public void Play()
     {
         try
         {
-            SceneManager.LoadScene("TESTEIntroducao");
+            Destroy(DayManager.dm);
+            Destroy(GameManager.instance);
+            Time.timeScale = 1f;
+
+            SceneManager.LoadScene(tutorialSceneName);
         }
-        catch (System.Exception ex) {
+        catch (System.Exception ex)
+        {
             Debug.LogError(ex.Message);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

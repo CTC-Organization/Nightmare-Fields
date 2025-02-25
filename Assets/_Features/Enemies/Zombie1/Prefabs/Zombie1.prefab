@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 2303751957345154772}
   - component: {fileID: 7007042320948797725}
   - component: {fileID: 20736263090893180}
+  - component: {fileID: 5757698402439581532}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Enemy
@@ -35,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 8026237430215474164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 940447945
-  m_SortingLayer: 1
+  m_SortingLayerID: -836110871
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 2601514537129177563, guid: 16dc5c5c7704e174b972f8de349ddbdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -158,7 +159,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.44
+  m_Radius: 0.78
 --- !u!114 &2283252789431092276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,9 +237,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 720
-  slowdownDistance: 2
+  slowdownDistance: 2.5
   pickNextWaypointDist: 0.44
-  endReachedDistance: 1.5
+  endReachedDistance: 2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -271,12 +272,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  attackCooldown: 10
-  hitBoxSize: {x: 0.97, y: 1.55, z: 0}
-  attackStartDistance: 0.75
+  attackCooldown: 1.5
+  hitBoxSize: {x: 1, y: 2.58, z: 1}
+  attackStartDistance: 2
   animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
   enemyMovement: {fileID: 7678263879996182864}
+  attackVFX: {fileID: 3173251329650498938, guid: 1e716ca46bce1184e95788f38bf4b2eb, type: 3}
 --- !u!114 &7007042320948797725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24823212148049a4f95244a8ac584fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingEnemyHealth: 1
+  startingEnemyHealth: 2
 --- !u!95 &20736263090893180
 Animator:
   serializedVersion: 7
@@ -312,3 +314,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5757698402439581532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5173ee85c22f8d24d96cca660f3a0b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

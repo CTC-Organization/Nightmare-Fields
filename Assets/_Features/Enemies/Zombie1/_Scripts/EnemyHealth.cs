@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
-        if (isDead) return;
+        if (isDead || this == null) return;
         Debug.Log("Inimigo " + name + " morreu");
         GameManager.instance.EnemyCount();
         isDead = true;
@@ -49,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("trigger");
         if (collision.CompareTag("Player_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_Bullet: {collision.name}");
@@ -59,6 +60,12 @@ public class EnemyHealth : MonoBehaviour
             //Debug.Log($"Total de colisões: {collisionCount}");
 
             //GameManager.instance.CheckCollisionCount(collisionCount); // Verifica no GameManager
+        }
+        else if (collision.CompareTag("Player_Especial_Bullet"))
+        {
+            Debug.Log($"Enemy hit by Player_EspecialBullet: {collision.name}");
+            // Destroy(collision.gameObject);
+            TakeDamage(2);
         }
     }
 }
