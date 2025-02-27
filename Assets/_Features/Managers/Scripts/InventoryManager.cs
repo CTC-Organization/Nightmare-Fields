@@ -1,4 +1,5 @@
-﻿using TopDown.Shooting;
+﻿using System.Collections.Generic;
+using TopDown.Shooting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,21 +14,14 @@ public class InventoryManager : MonoBehaviour
 
     int selectedSlot = -1;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Mantém o inventário entre cenas
-        }
-        else
-        {
-            Destroy(gameObject); // Garante que só exista um inventário
-        }
-    }
+    private Dictionary<int, Item> savedInventory = new Dictionary<int, Item>();
 
     private void Start()
     {
+        if (Instance == this)
+    {
+        LoadInventory(); // Restaura o inventário ao carregar a cena
+    }
         ChangeSelectedSlot(0);
         gunController = GameObject.FindWithTag("Player")?.GetComponent<GunController>();
 
@@ -67,11 +61,12 @@ public class InventoryManager : MonoBehaviour
 
     public void UseSelectedItem()
     {
-        Item selectedItem = GetSelectedItem(remove: true);
+        Item selectedItem = GetSelectedItem(remove: false);
 
         if (selectedItem is PowerUp powerUp)
         {
             powerUp.ActivatePowerUp(gunController);
+            selectedItem = GetSelectedItem(remove: true);
         }
         else
         {
@@ -79,7 +74,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private Item GetSelectedItem(bool remove = false)
+    public Item GetSelectedItem(bool remove = false)
     {
         if (selectedSlot < 0 || selectedSlot >= InventorySlots.Length)
             return null;
@@ -103,4 +98,88 @@ public class InventoryManager : MonoBehaviour
 
         return null;
     }
+
+    public void AddPowerUpToInventory()
+    {
+        foreach (var slot in InventorySlots)
+        {
+            if (slot.transform.childCount == 0)  // Se o slot estiver vazio
+            {
+                // Instancia o prefab do PowerUp 1 no slot
+                GameObject newItem = Instantiate(Resources.Load("PowerUp 1"), slot.transform) as GameObject;
+                if (newItem == null)
+                {
+                    Debug.LogError("Prefab PowerUp 1 não encontrado na pasta Resources.");
+                    return;
+                }
+
+                InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
+
+                // Se o prefab PowerUp estiver configurado corretamente, basta adicionar
+                PowerUp powerUp = newItem.GetComponent<PowerUp>();
+                if (powerUp != null)
+                {
+                    inventoryItem.InitializeItem(powerUp); // Configura o item no slot de inventário
+                }
+
+                Debug.Log("PowerUp adicionado ao inventário!");
+                return;
+            }
+        }
+
+        Debug.LogWarning("Inventário cheio! Não foi possível adicionar o PowerUp.");
+    }
+
+    public void SaveInventory()
+    {
+        savedInventory.Clear();
+        for (int i = 0; i < InventorySlots.Length; i++)
+        {
+            Item item = GetItemFromSlot(i);
+            if (item != null)
+            {
+                savedInventory[i] = item;
+            }
+        }
+    }
+
+    public void LoadInventory()
+    {
+        foreach (var kvp in savedInventory)
+        {
+            AddItemToSlot(kvp.Value, kvp.Key);
+        }
+    }
+
+    private Item GetItemFromSlot(int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= InventorySlots.Length)
+            return null;
+
+        InventorySlot slot = InventorySlots[slotIndex];
+
+        if (slot.transform.childCount > 0)
+        {
+            InventoryItem inventoryItem = slot.transform.GetChild(0).GetComponent<InventoryItem>();
+            return inventoryItem?.item;
+        }
+        return null;
+    }
+
+    private void AddItemToSlot(Item item, int slotIndex)
+    {
+        if (slotIndex < 0 || slotIndex >= InventorySlots.Length)
+            return;
+
+        InventorySlot slot = InventorySlots[slotIndex];
+
+        if (slot.transform.childCount == 0) // Só adiciona se o slot estiver vazio
+        {
+            GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
+            InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
+            inventoryItem.InitializeItem(item);
+        }
+    }
+
+
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.Collections;
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     public bool fightIsToStart = false;
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
+
+    private Dictionary<Vector2, (FarmTile.PlantState, Vector3)> farmTileStates = new Dictionary<Vector2, (FarmTile.PlantState, Vector3)>();
 
     void Start()
     {
@@ -138,6 +141,22 @@ public class GameManager : MonoBehaviour
             wonPanel.SetActive(false);
         canComeBackToFarm = true;
     }
+
+    public void SaveFarmTileState(Vector2 position, FarmTile.PlantState state, Vector3 plantPosition)
+    {
+        farmTileStates[position] = (state, plantPosition);
+        Debug.Log($"FarmTile salvo: {position} - {state}");
+    }
+
+
+    public (FarmTile.PlantState, Vector3) GetFarmTileState(Vector2 position)
+    {
+        Vector3 plantPosition = farmTileStates[position].Item2;
+        plantPosition += Vector3.up;
+        return (FarmTile.PlantState.Grown, plantPosition);
+    }
+
+
     // private void OnEnable()
     // {
     //     pauseResumePressed.action.started += PauseResume;
