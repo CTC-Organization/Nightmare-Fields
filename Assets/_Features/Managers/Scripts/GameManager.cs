@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
 
-        if (canComeBackToFarm && DayManager.dm.days == 1)
+        if (canComeBackToFarm && DayManager.dm.days == 5)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(creditsSceneName);
