@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExplosionMaterial
+  m_Name: FireBallExplosionMaterial
   m_Shader: {fileID: -6465566751694194690, guid: e8ed513f359364641b64ba7122922617, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -60,7 +60,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Bits: 4
+    - _Bits: 8
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
@@ -73,6 +73,6 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 72.65929, g: 17.450338, b: 2.1797767, a: 1}
+    - _Color: {r: 8, g: 1.4446229, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

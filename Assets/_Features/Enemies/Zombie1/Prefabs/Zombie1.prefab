@@ -20,7 +20,8 @@ GameObject:
   - component: {fileID: 7007042320948797725}
   - component: {fileID: 20736263090893180}
   - component: {fileID: 5757698402439581532}
-  - component: {fileID: 4993450139429558432}
+  - component: {fileID: 7899366485867998101}
+  - component: {fileID: 4108257106293894714}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Enemy
@@ -257,9 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e785bd1b0b86f94ea9d85fd250b77b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 20736263090893180}
   aiDestinationSetter: {fileID: 2283252789431092276}
-  isDying: 0
 --- !u!114 &2303751957345154772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,9 +275,8 @@ MonoBehaviour:
   attackCooldown: 1.5
   hitBoxSize: {x: 1, y: 2.58, z: 1}
   attackStartDistance: 2
-  animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
-  enemyMovement: {fileID: 7678263879996182864}
+  ec: {fileID: 4108257106293894714}
   attackVFX: {fileID: 3173251329650498938, guid: 1e716ca46bce1184e95788f38bf4b2eb, type: 3}
 --- !u!114 &7007042320948797725
 MonoBehaviour:
@@ -292,7 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24823212148049a4f95244a8ac584fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingEnemyHealth: 2
+  startingHealth: 2
+  currentHealth: 0
 --- !u!95 &20736263090893180
 Animator:
   serializedVersion: 7
@@ -327,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5173ee85c22f8d24d96cca660f3a0b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4993450139429558432
+--- !u!114 &7899366485867998101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,3 +342,18 @@ MonoBehaviour:
   - prefab: {fileID: 0}
     weight: 0
   noDropChance: 0.2
+--- !u!114 &4108257106293894714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f61265fd78a87468b9c7f6f5afcce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 20736263090893180}
+  isDying: 0
+  isDashing: 0

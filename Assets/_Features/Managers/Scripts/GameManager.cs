@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int enemyCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public  DayManager dayManagerOriginal;
+    public DayManager dayManagerOriginal;
     public string arenaSceneName;
 
     public string farmSceneName;
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public bool fightIsToStart = false;
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
+    public bool isNightmareMode = false;
+
 
     void Start()
     {
@@ -75,10 +77,10 @@ public class GameManager : MonoBehaviour
     {
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
-        Debug.Log($"conategm {enemyCount}");
         if (canComeBackToFarm)
         {
             canComeBackToFarm = false;
+            GameManager.instance.isNightmareMode = false;
             tm.Teleport(farmSceneName);
         }
         else if (playerHealth == null)
@@ -94,7 +96,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         DayManager.dm.DayNightSystemUpdate();
-        Debug.Log(DayManager.dm.hours);
     }
 
     public void SkipToFightTime()
