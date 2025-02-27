@@ -41,9 +41,11 @@ public class EnemyHealth : MonoBehaviour
     public void Die()
     {
         if (isDead) return;
+        DropController dropController = GetComponent<DropController>();
         Debug.Log("Inimigo " + name + " morreu");
         GameManager.instance.EnemyCount();
         isDead = true;
+        dropController.SpawnDrop(transform);
         Destroy(gameObject);
     }
 
