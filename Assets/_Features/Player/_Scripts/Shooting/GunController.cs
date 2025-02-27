@@ -1,4 +1,5 @@
 using TopDown.Shooting;
+using Unity.Cinemachine;
 using UnityEngine;
 
 namespace TopDown.Shooting
@@ -70,6 +71,9 @@ namespace TopDown.Shooting
             Debug.Log($"Fire Point Position: {_firePoint.position}");
             Debug.Log($"Direction: {direction}");
 
+            // Screenshake
+            CinemachineImpulseSource cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
+            cinemachineImpulseSource.GenerateImpulse();
             // Criar o proj�til
             GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
             bullet.GetComponent<Projectile>().ShootBullet(direction);
