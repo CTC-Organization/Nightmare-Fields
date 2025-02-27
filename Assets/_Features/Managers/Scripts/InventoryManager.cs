@@ -1,15 +1,30 @@
-using TopDown.Shooting;
-using Unity.VisualScripting;
+Ôªøusing TopDown.Shooting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+
     public int maxStackedValue = 5;
     public InventorySlot[] InventorySlots;
     public GameObject inventoryItemPrefab;
     public GunController gunController;
 
     int selectedSlot = -1;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Mant√©m o invent√°rio entre cenas
+        }
+        else
+        {
+            Destroy(gameObject); // Garante que s√≥ exista um invent√°rio
+        }
+    }
 
     private void Start()
     {
@@ -18,10 +33,9 @@ public class InventoryManager : MonoBehaviour
 
         if (gunController == null)
         {
-            Debug.LogError("GunController n„o foi encontrado. Verifique se o Player tem a tag 'Player' e o componente GunController.");
+            Debug.LogError("GunController n√£o foi encontrado. Verifique se o Player tem a tag 'Player' e o componente GunController.");
         }
     }
-
 
     private void Update()
     {
@@ -34,7 +48,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.V)) // Suponha que "E" seja a tecla de uso
+        if (Input.GetKeyDown(KeyCode.V))
         {
             UseSelectedItem();
         }
@@ -53,22 +67,17 @@ public class InventoryManager : MonoBehaviour
 
     public void UseSelectedItem()
     {
-        Item selectedItem = GetSelectedItem(remove: true); // Remove o item apÛs o uso
+        Item selectedItem = GetSelectedItem(remove: true);
 
         if (selectedItem is PowerUp powerUp)
         {
-            // Ativa o PowerUp se o item for do tipo PowerUp
             powerUp.ActivatePowerUp(gunController);
         }
         else
         {
-            Debug.LogWarning("Item selecionado n„o È um PowerUp!");
+            Debug.LogWarning("Item selecionado n√£o √© um PowerUp!");
         }
     }
-
-
-
-
 
     private Item GetSelectedItem(bool remove = false)
     {
@@ -86,7 +95,7 @@ public class InventoryManager : MonoBehaviour
                 Item item = inventoryItem.item;
                 if (remove)
                 {
-                    Destroy(inventoryItem.gameObject); // Remove o item do invent·rio apÛs o uso
+                    Destroy(inventoryItem.gameObject);
                 }
                 return item;
             }
@@ -94,5 +103,4 @@ public class InventoryManager : MonoBehaviour
 
         return null;
     }
-
 }
