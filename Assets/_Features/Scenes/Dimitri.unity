@@ -2010,7 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImpulseDefinition:
     ImpulseChannel: 1
-    ImpulseShape: 4
+    ImpulseShape: 1
     CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -3391,6 +3391,10 @@ PrefabInstance:
     - target: {fileID: 679065726779455342, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548649834424875875, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
+      propertyPath: dropTable.Array.data[1].weight
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2303751957345154772, guid: 6e3c999687aca4c4daac1057e72dc796, type: 3}
       propertyPath: hitBoxSize.x

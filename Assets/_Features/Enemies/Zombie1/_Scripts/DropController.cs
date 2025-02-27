@@ -11,10 +11,17 @@ public class DropController : MonoBehaviour
     }
 
     public List<DropItem> dropTable = new List<DropItem>(); // Tabela de drops com pesos
+    [Range(0f, 1f)] public float noDropChance = 0.2f; // Chance de nenhum drop cair (20% por padrão)
 
     // Método para sortear um drop baseado nos pesos
     public GameObject GetRandomDrop()
     {
+        // Verifica se nenhum drop deve cair
+        if (Random.value < noDropChance)
+        {
+            return null; // Retorna null para indicar que nenhum drop foi sorteado
+        }
+
         // Calcula o peso total da tabela de drops
         float totalWeight = 0f;
         foreach (var drop in dropTable)
@@ -48,7 +55,7 @@ public class DropController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Nenhum drop foi sorteado ou a tabela de drops está vazia.");
+            Debug.Log("Nenhum drop foi sorteado.");
         }
     }
 }
