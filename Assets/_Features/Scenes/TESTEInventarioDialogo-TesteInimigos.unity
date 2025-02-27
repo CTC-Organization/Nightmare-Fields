@@ -3672,7 +3672,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 19.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18866,7 +18866,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.95
+  m_fontSize: 19.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21190,7 +21190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: farmSceneName
-      value: TESTEInventarioDialogo
+      value: TESTEInventarioDialogo-TesteInimigos
       objectReference: {fileID: 0}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: gameOverPanel
@@ -21198,7 +21198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: arenaSceneName
-      value: Arena2
+      value: Arena2-TesteInimigos
       objectReference: {fileID: 0}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: dayManagerOriginal

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Pathfinding;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -8,14 +9,12 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private Vector3 hitBoxSize;
     [SerializeField] private float attackStartDistance;
-    [SerializeField] private Animator animator;
     private Coroutine attackRoutine = null;
 
     [SerializeField] private Vector3 attackOrigin; // Dist�ncia de ataque
-    [SerializeField] private EnemyMovement enemyMovement;
+    private IAstarAI ai;
+
     [SerializeField] private EnemyController ec;
-
-
 
     [SerializeField] private GameObject attackVFX;
     private float lastAttackTime;
@@ -23,6 +22,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start()
     {
+        ai = GetComponent<IAstarAI>();
         ec = GetComponent<EnemyController>();
         target = GameObject.FindWithTag("Player");
     }
@@ -35,7 +35,7 @@ public class EnemyAttack : MonoBehaviour
             if (attackRoutine != null) StopAllCoroutines();
             return;
         }
-        else if (enemyMovement.ai.reachedDestination && target != null && Time.time - lastAttackTime >= attackCooldown)
+        else if (ai.reachedDestination && target != null && Time.time - lastAttackTime >= attackCooldown)
         {
             attackRoutine = StartCoroutine(Attack());
         }
@@ -62,7 +62,6 @@ public class EnemyAttack : MonoBehaviour
 
         attackOrigin = transform.position + directionToTarget * attackStartDistance;
 
-        // animator.SetTrigger("Attack");
         Instantiate(attackVFX, target.transform.position, Quaternion.identity);
         Debug.Log("Chris Ataque do inimigo");
         LayerMask targetMask = 1 << target.layer;

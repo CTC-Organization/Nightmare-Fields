@@ -4,6 +4,7 @@ public class EnemyController : MonoBehaviour
 {
     public Animator animator;
     public bool isDying = false;
+    public bool isDashing = false;
 
 
     public void UpdateAnimatorParameters(Vector3 velocity)

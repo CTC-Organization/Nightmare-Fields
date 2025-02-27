@@ -7,24 +7,40 @@ using Pathfinding;
 public class WaveManager : MonoBehaviour
 {
     [Header("Configurações da Wave")]
-    public GameObject enemyPrefab;      // Prefab do inimigo
-    public GameObject bossPrefab;
+
     public Transform[] spawnPoints;     // Pontos de spawn
     public float spawnDelay = 0.5f;     // Delay entre os spawns
+    private List<GameObject> currentEnemies = new List<GameObject>();
 
-    [Header("Configuração dos Dias")]
+
+    [Header("Configuração da progressão por wave")]
     public int currentDay = 1;          // Escolha o dia manualmente
-    public int[] enemiesPerDay = { 20, 40, 60, 80, 1000 };
+
     [SerializeField]
     float speedAugmentPerDay = .75f;
-    [SerializeField] float healthAugmentPerDay = .2f;
+    [SerializeField]
+    float healthAugmentPerDay = .2f;
+
+    [Header("Configuração dos inimigos")]
+    public GameObject bossPrefab;
+
+    public GameObject enemyPrefab;      // Prefab do inimigo
+    public int[] enemiesPerDay = { 20, 40, 60, 80, 1000 };
+    public GameObject gargoylePrefab;      // Prefab do inimigo
+    public int[] gargoylesPerDay = { 10, 20, 30, 40, 50 };
+    [SerializeField] GameObject speedZombiePrefab;
+
+    [Header("Eventos nas waves")]
     public int circleWaveNumber;
 
-
-    private List<GameObject> currentEnemies = new List<GameObject>();
+    [SerializeField] int nightmareModeProb = 10; // colocar 10-%
 
     void Start()
     {
+        if (Random.Range(0, 100) < nightmareModeProb)
+        {
+            GameManager.instance.isNightmareMode = true;
+        }
         currentDay = DayManager.dm.days;
 
         Debug.Log("currentDay :" + currentDay + "\nDayManager.dm.days: " + DayManager.dm.days);
@@ -37,28 +53,47 @@ public class WaveManager : MonoBehaviour
         int enemyCount = GetEnemiesForDay(day);
         Debug.Log($"🌊 Dia {day} - Inimigos: {enemyCount}");
 
-        for (int i = 0; i < enemyCount; i++)
+        if (!GameManager.instance.isNightmareMode)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnDelay);
-            if (i == enemyCount / 2 && circleWaveNumber < 1 && day % 2 == 0) // spawn do circulo após spawnar metade do inimigos
-            {// spawna circulo nos dias impares
-                GetComponent<CircleWaveSpawner>().StartCircleWave();
+            for (int i = 0; i < enemyCount; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(spawnDelay);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < enemyCount; i++)
+            {
+                SpawnOtherEnemy(speedZombiePrefab);
+                yield return new WaitForSeconds(spawnDelay);
             }
         }
 
-        if (currentDay == 5) // corrigir futuramente
+
+        if (currentDay == 4) // corrigir futuramente
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject enemy = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
             currentEnemies.Add(enemy);
         }
-        // else if (currentDay == 10) // corrigir futuramente - SPAWNA Boss cospe fogo
-        // {
-        //     Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        //     GameObject enemy = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
-        //     currentEnemies.Add(enemy);
-        // }
+
+        if (circleWaveNumber < 1 && day >= 3F)
+        {
+            GetComponent<CircleWaveSpawner>().StartCircleWave();
+        }
+
+        if (currentDay >= 5)
+        {
+            int gargoylesCount = gargoylesPerDay[System.Math.Min(currentDay, 5) - 5];
+            // int gargoylesCount = gargoylesPerDay[currentDay - 1];
+            for (int i = 0; i < gargoylesCount; i++)
+            {
+                SpawnOtherEnemy(gargoylePrefab);
+                yield return new WaitForSeconds(spawnDelay);
+            }
+        }
+
     }
 
     void SpawnEnemy()
@@ -76,6 +111,15 @@ public class WaveManager : MonoBehaviour
         float lifeAugment = (float)System.Math.Floor(healthAugmentPerDay);
         enemy.GetComponent<EnemyHealth>().startingHealth += lifeAugment;
         enemy.GetComponent<EnemyHealth>().currentHealth += lifeAugment; // aumenta HP a cada wave
+    }
+
+    void SpawnOtherEnemy(GameObject otherEnemyPrefab)
+    {
+        if (spawnPoints.Length == 0 || otherEnemyPrefab == null) return;
+
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject otherEnemy = Instantiate(otherEnemyPrefab, spawnPoint.position, Quaternion.identity);
+        currentEnemies.Add(otherEnemy);
     }
 
     int GetEnemiesForDay(int day)

@@ -19,6 +19,12 @@ public class EnemyMovement : MonoBehaviour
         {
             SetTarget(player.transform);
         }
+
+        if (Random.Range(0, 100) > 95)
+        { // sorteio mini modo hunter
+            ai.maxSpeed *= 2;
+            GetComponent<EnemyHealth>().startingHealth *= 1.2f;
+        }
     }
 
     private void Update()
