@@ -83,12 +83,12 @@ public class WaveManager : MonoBehaviour
             GetComponent<CircleWaveSpawner>().StartCircleWave();
         }
 
-        if (currentDay >= 5)
+        if (currentDay == 4)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             GameObject enemy = Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
             currentEnemies.Add(enemy);
-            int gargoylesCount = gargoylesPerDay[System.Math.Min(currentDay, 5) - 5];
+            int gargoylesCount = gargoylesPerDay[day - 1];
             // int gargoylesCount = gargoylesPerDay[currentDay - 1];
             for (int i = 0; i < gargoylesCount; i++)
             {

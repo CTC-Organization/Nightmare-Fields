@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5757698402439581532}
   - component: {fileID: 7899366485867998101}
   - component: {fileID: 4108257106293894714}
+  - component: {fileID: 5251144447908984679}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Enemy
@@ -357,3 +358,19 @@ MonoBehaviour:
   animator: {fileID: 20736263090893180}
   isDying: 0
   isDashing: 0
+--- !u!114 &5251144447908984679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4c4e8b4e02ee840909fe3471dbbdbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+  - prefab: {fileID: 5855625217485013922, guid: 7c51301e8ca1aba46999ab34be328cbe, type: 3}
+    weight: 60
+  noDropChance: 0.6

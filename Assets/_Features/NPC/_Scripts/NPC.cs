@@ -20,7 +20,11 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        UpdateDialogueBasedOnDay();
+        if (GameManager.instance != null)
+        {
+            UpdateDialogueBasedOnDay();
+        }
+
     }
 
     void Update()
@@ -42,10 +46,10 @@ public class NPC : MonoBehaviour
                 contButton.SetActive(true);
             }
         }
-        
+
     }
 
-    void UpdateDialogueBasedOnDay()
+    public void UpdateDialogueBasedOnDay()
     {
         int currentDay = DayManager.dm.days;
 
