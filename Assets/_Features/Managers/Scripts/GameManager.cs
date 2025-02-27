@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
     public bool isNightmareMode = false;
+    public bool inCredits = false;
 
 
 
@@ -84,11 +85,12 @@ public class GameManager : MonoBehaviour
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
 
-        if (canComeBackToFarm && DayManager.dm.days == 5)
+        if (canComeBackToFarm && DayManager.dm.days == 1)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(creditsSceneName);
-            Time.timeScale = 1;
+            inCredits = true;
+            Destroy(this.gameObject);
         }
         else if (canComeBackToFarm)
         {
