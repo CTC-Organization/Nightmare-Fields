@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _currentVelocity;
 
     AudioSource audioSource;
-
-    private bool isRunning = false;
+    private bool hasGun = false;
     float x;
 
     Animator anim;
@@ -72,17 +71,19 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            isRunning = true;
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            isRunning = false;
-        }
+       if (Input.GetKeyDown(KeyCode.F))
+    {
+        hasGun = !hasGun;
+        anim.SetBool("HasGun", hasGun); // Atualiza o parâmetro do Animator
+        Debug.Log(hasGun);
+    }
+        // if (Input.GetKeyUp(KeyCode.F))
+        // {
+        //     isRunning = false;
+        // }
 
         // Atualiza o parâmetro do Animator
-        anim.SetBool("IsRunning", isRunning);
+        // anim.SetBool("IsRunning", isRunning);
 
         x = Input.GetAxis("Horizontal") * _moveSpeed;
         _rb.linearVelocity = new Vector2(x, _rb.linearVelocity.y);

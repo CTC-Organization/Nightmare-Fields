@@ -1,36 +1,36 @@
 fileFormatVersion: 2
-guid: c2b3307104581f24db71730d9bd77394
+guid: 335d79972fccb6643bc06d29966e86cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1454803761425713567
-    second: run_gun_right_up_0
+      213: 1057068945708647824
+    second: Shooting_down_0
   - first:
-      213: 6017669006269034810
-    second: run_gun_right_up_1
+      213: 3888374745185837109
+    second: Shooting_down_1
   - first:
-      213: 3412985821603605637
-    second: run_gun_right_up_2
+      213: -5295489140363128290
+    second: Shooting_down_2
   - first:
-      213: 7245905702138932394
-    second: run_gun_right_up_3
+      213: 8127596295656220442
+    second: Shooting_down_3
   - first:
-      213: -2071849872206655072
-    second: run_gun_right_up_4
+      213: 1249428069905202470
+    second: Shooting_down_4
   - first:
-      213: 7573204377252948387
-    second: run_gun_right_up_5
+      213: 8779433638136836848
+    second: Shooting_down_5
   - first:
-      213: 8863359117673625657
-    second: run_gun_right_up_6
+      213: 2034638439218498399
+    second: Shooting_down_6
   - first:
-      213: -7073953665094846148
-    second: run_gun_right_up_7
+      213: 7662757930325714697
+    second: Shooting_down_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -69,10 +69,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 62
+  spritePixelsToUnits: 125
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: run_gun_right_up_0
+      name: Shooting_down_0
       rect:
         serializedVersion: 2
-        x: 68
-        y: 443
-        width: 111
-        height: 86
+        x: 135
+        y: 823
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1667156dfaf7fcbe0800000000000000
-      internalID: -1454803761425713567
+      spriteID: 0958f040b967bae00800000000000000
+      internalID: 1057068945708647824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_1
+      name: Shooting_down_1
       rect:
         serializedVersion: 2
-        x: 260
-        y: 436
-        width: 111
-        height: 90
+        x: 518
+        y: 826
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a313b86041e038350800000000000000
-      internalID: 6017669006269034810
+      spriteID: 530e660ba3846f530800000000000000
+      internalID: 3888374745185837109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_2
+      name: Shooting_down_2
       rect:
         serializedVersion: 2
-        x: 452
-        y: 431
-        width: 111
-        height: 86
+        x: 903
+        y: 823
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58ca020a58c5d5f20800000000000000
-      internalID: 3412985821603605637
+      spriteID: e1297bcfea4a286b0800000000000000
+      internalID: -5295489140363128290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_3
+      name: Shooting_down_3
       rect:
         serializedVersion: 2
-        x: 68
-        y: 251
-        width: 111
-        height: 82
+        x: 136
+        y: 442
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aace7fb78d0ae8460800000000000000
-      internalID: 7245905702138932394
+      spriteID: a17ae50e4c50bc070800000000000000
+      internalID: 8127596295656220442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_4
+      name: Shooting_down_4
       rect:
         serializedVersion: 2
-        x: 252
-        y: 247
-        width: 111
-        height: 86
+        x: 519
+        y: 439
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a11f23b48f4f33e0800000000000000
-      internalID: -2071849872206655072
+      spriteID: 62df917b53cd65110800000000000000
+      internalID: 1249428069905202470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_5
+      name: Shooting_down_5
       rect:
         serializedVersion: 2
-        x: 452
-        y: 243
-        width: 111
-        height: 90
+        x: 907
+        y: 440
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a9689da14d691960800000000000000
-      internalID: 7573204377252948387
+      spriteID: 0f2f242e060d6d970800000000000000
+      internalID: 8779433638136836848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_6
+      name: Shooting_down_6
       rect:
         serializedVersion: 2
-        x: 67
-        y: 47
-        width: 111
-        height: 86
+        x: 135
+        y: 55
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 938f7ad482af00b70800000000000000
-      internalID: 8863359117673625657
+      spriteID: f5b49f761ec7c3c10800000000000000
+      internalID: 2034638439218498399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: run_gun_right_up_7
+      name: Shooting_down_7
       rect:
         serializedVersion: 2
-        x: 259
-        y: 51
-        width: 111
-        height: 90
+        x: 519
+        y: 52
+        width: 122
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,8 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c39f27afe9444dd90800000000000000
-      internalID: -7073953665094846148
+      spriteID: 9072fd41db5975a60800000000000000
+      internalID: 7662757930325714697
       vertices: []
       indices: 
       edges: []
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0deabff9c021ec34584ed876b2a2946c
+    spriteID: ada64ed868753ea4cad7454189ee0995
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      run_gun_right_up_0: -1454803761425713567
-      run_gun_right_up_1: 6017669006269034810
-      run_gun_right_up_2: 3412985821603605637
-      run_gun_right_up_3: 7245905702138932394
-      run_gun_right_up_4: -2071849872206655072
-      run_gun_right_up_5: 7573204377252948387
-      run_gun_right_up_6: 8863359117673625657
-      run_gun_right_up_7: -7073953665094846148
+      Shooting_down_0: 1057068945708647824
+      Shooting_down_1: 3888374745185837109
+      Shooting_down_2: -5295489140363128290
+      Shooting_down_3: 8127596295656220442
+      Shooting_down_4: 1249428069905202470
+      Shooting_down_5: 8779433638136836848
+      Shooting_down_6: 2034638439218498399
+      Shooting_down_7: 7662757930325714697
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
