@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _movement;
     private Vector2 _currentVelocity;
 
-    AudioSource audioSource;
     private bool hasGun = false;
     float x;
 
@@ -49,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
 
-        audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         material = spriteRenderer.material; // Obt�m o material do SpriteRenderer
@@ -88,17 +86,6 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal") * _moveSpeed;
         _rb.linearVelocity = new Vector2(x, _rb.linearVelocity.y);
 
-        if (_rb.linearVelocity.x != 0)
-        {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            audioSource.Stop();
-        }
 
         // Movimentação normal
         _movement.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

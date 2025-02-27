@@ -3801,7 +3801,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.9
+  m_fontSize: 19.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18995,7 +18995,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.8
+  m_fontSize: 19.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21302,6 +21302,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2108056704}
+    - target: {fileID: 3774482787362488001, guid: c78d5cbc4dab90b4287829fb15f482d9, type: 3}
       propertyPath: wonPanel
       value: 
       objectReference: {fileID: 0}
@@ -22681,6 +22685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1510650135}
+  - component: {fileID: 1510650136}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -22729,6 +22734,19 @@ Transform:
   - {fileID: 1569007469}
   m_Father: {fileID: 1069541143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1510650136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510650134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80d22408a02ed740ab52d530e5fae16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2108056704}
 --- !u!1001 &1532159937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22843,7 +22861,11 @@ PrefabInstance:
     - target: {fileID: 1089460590062328332, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: shootSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 467ee840d5aa3c444a5a9c24399d86a8, type: 3}
+    - target: {fileID: 1089460590062328332, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 2108056701}
     - target: {fileID: 1089460590062328332, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: _bulletPrefabEspecial
       value: 
@@ -22922,16 +22944,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8728872444391858186, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8728872444391858186, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 467ee840d5aa3c444a5a9c24399d86a8, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8728872444391858186, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 467ee840d5aa3c444a5a9c24399d86a8, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9014741317739920163, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
       propertyPath: m_SortingLayer
       value: 5
@@ -103996,6 +104018,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &2108056701 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8728872444391858186, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
+  m_PrefabInstance: {fileID: 1540480543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2108056704 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1519973318291676395, guid: c7161fe030ecd1c44baa0dddcf50e08f, type: 3}
+  m_PrefabInstance: {fileID: 1540480543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108315857
 GameObject:
   m_ObjectHideFlags: 0

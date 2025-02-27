@@ -5,6 +5,8 @@ public class Shooting : MonoBehaviour
 {
     public bool IsShooting = false;
     public Animator anim; // Referência ao componente Animator
+    // public AudioSource audioSource; // Referência ao componente AudioSource
+    // public AudioClip shootSound; // Som de tiro
 
     private Coroutine resetCoroutine; // Armazena a referência da corrotina atual
 
@@ -23,6 +25,12 @@ public class Shooting : MonoBehaviour
 
             // Atualiza o parâmetro do Animator
             anim.SetBool("IsShooting", IsShooting);
+
+            // Toca o som de tiro
+            // if (audioSource != null && shootSound != null)
+            // {
+            //     audioSource.PlayOneShot(shootSound);
+            // }
 
             // Inicia a corrotina para resetar IsShooting após um delay
             resetCoroutine = StartCoroutine(ResetShootingAfterDelay());
