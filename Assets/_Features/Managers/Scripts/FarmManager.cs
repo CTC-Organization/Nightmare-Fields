@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class FarmManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static FarmManager Instance;
+    public GameObject plantPrefab; // Prefab da plantação
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 }

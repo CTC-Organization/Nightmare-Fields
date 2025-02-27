@@ -1,3 +1,5 @@
+using TopDown.Shooting;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -5,13 +7,21 @@ public class InventoryManager : MonoBehaviour
     public int maxStackedValue = 5;
     public InventorySlot[] InventorySlots;
     public GameObject inventoryItemPrefab;
+    public GunController gunController;
 
     int selectedSlot = -1;
 
     private void Start()
     {
         ChangeSelectedSlot(0);
+        gunController = GameObject.FindWithTag("Player")?.GetComponent<GunController>();
+
+        if (gunController == null)
+        {
+            Debug.LogError("GunController não foi encontrado. Verifique se o Player tem a tag 'Player' e o componente GunController.");
+        }
     }
+
 
     private void Update()
     {
@@ -20,11 +30,13 @@ public class InventoryManager : MonoBehaviour
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < 8)
             {
-                int n = number - 1;
-                Debug.Log("trocou: "+n);
-                ChangeSelectedSlot(n);
-
+                ChangeSelectedSlot(number - 1);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.V)) // Suponha que "E" seja a tecla de uso
+        {
+            UseSelectedItem();
         }
     }
 
@@ -39,60 +51,48 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = newValue;
     }
 
-    public bool AddNewItem(Item item)
+    public void UseSelectedItem()
     {
-        for (int i = 0; i < InventorySlots.Length; i++)
+        Item selectedItem = GetSelectedItem(remove: true); // Remove o item após o uso
+
+        if (selectedItem is PowerUp powerUp)
         {
-            InventorySlot slot = InventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStackedValue && itemInSlot.item.stackable == true)
-            {
-                itemInSlot.count++;
-                itemInSlot.RefreshCount();
-                return true;
-            }
+            // Ativa o PowerUp se o item for do tipo PowerUp
+            powerUp.ActivatePowerUp(gunController);
         }
-        for (int i = 0; i < InventorySlots.Length; i++)
+        else
         {
-            InventorySlot slot = InventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot == null)
-            {
-                SpawnNewItem(item, slot);
-                return true;
-            }
+            Debug.LogWarning("Item selecionado não é um PowerUp!");
         }
-        return false;
     }
 
-    public void SpawnNewItem(Item item, InventorySlot slot)
-    {
-        GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
-        InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
-        inventoryItem.InitializeItem(item);
-    }
 
-    public Item GetSelectedItem(bool use)
+
+
+
+    private Item GetSelectedItem(bool remove = false)
     {
+        if (selectedSlot < 0 || selectedSlot >= InventorySlots.Length)
+            return null;
+
         InventorySlot slot = InventorySlots[selectedSlot];
-        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-        if (itemInSlot != null)
+
+        if (slot.transform.childCount > 0)
         {
-            Item item = itemInSlot.item;
-            if (use == true)
+            InventoryItem inventoryItem = slot.transform.GetChild(0).GetComponent<InventoryItem>();
+
+            if (inventoryItem != null)
             {
-                itemInSlot.count--;
-                if (itemInSlot.count <= 0)
+                Item item = inventoryItem.item;
+                if (remove)
                 {
-                    Destroy(itemInSlot.gameObject);
+                    Destroy(inventoryItem.gameObject); // Remove o item do inventário após o uso
                 }
-                else
-                {
-                    itemInSlot.RefreshCount();
-                }
+                return item;
             }
-            return item;
         }
+
         return null;
     }
+
 }

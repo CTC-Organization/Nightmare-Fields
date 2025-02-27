@@ -37,11 +37,12 @@ public class NPC : MonoBehaviour
                 dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
+            if (dialogueText.text == currentDialogue[index])
+            {
+                contButton.SetActive(true);
+            }
         }
-        if (dialogueText.text == currentDialogue[index])
-        {
-            contButton.SetActive(true);
-        }
+        
     }
 
     void UpdateDialogueBasedOnDay()

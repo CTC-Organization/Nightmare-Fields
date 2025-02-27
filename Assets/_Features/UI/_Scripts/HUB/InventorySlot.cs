@@ -21,13 +21,17 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         image.color = notSelectedColor;
     }
+
     public void OnDrop(PointerEventData eventData)
     {
-        if(transform.childCount == 0)
+        GameObject dropped = eventData.pointerDrag;
+        InventoryItem inventoryItem = dropped.GetComponent<InventoryItem>();
+
+        if (transform.childCount == 0)
         {
-            GameObject dropped = eventData.pointerDrag;
-            InventoryItem inventoryItem = dropped.GetComponent<InventoryItem>();
             inventoryItem.parentAfterDrag = transform;
+            dropped.transform.SetParent(transform);
+            dropped.transform.localPosition = Vector3.zero;
         }
     }
 }
