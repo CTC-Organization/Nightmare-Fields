@@ -24,7 +24,7 @@ namespace TopDown.Shooting
         private void Update()
         {
             if (GameManager.instance.isOnFarm) return;
-
+            Debug.Log(GameManager.instance.isOnFarm);
             _coolDownTimer += Time.deltaTime;
             _coolDownTimerEspecial += Time.deltaTime;
             powerUpTimer -= Time.deltaTime;

@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cosmo_Three_Shots_0: 3032833514273735084
+      Cosmo_Three_Shots_1: -1271873458748688543
+      Cosmo_Three_Shots_2: -1966148553513177061
+      Cosmo_Three_Shots_3: 419492897887469966
+      Cosmo_Three_Shots_4: 7347850782499293909
+      Cosmo_Three_Shots_5: 6374393880886412335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -413,16 +413,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nDesign -\n\nGiovanni lima do nascimento\n\nDesign de niveis -\n\nDiogo
-    Fontes de Franca\nCaio fontes de Melo\n\nProgramadores -\n\nCaio fontes de melo\nDimitri
-    Medeiros Marinovic\nDiogo Fontes de Franca\nGiovanni lima do nascimento\nLuiz
-    Filipe Albuquerque GOmes\n\nHistoria -\n\nCaio fontes de melo\nLuiz Filipe Albuquerque
-    GOmes\n\nGame designers - \n\nCaio fontes de melo\nLuiz Filipe Albuquerque GOmes\n\nMusica
-    e sons -\n\nDiogo fontes de Franca\n\nTestes -\n\nCaio Fontes de Melo\nDimitri
-    Medeiros Marinovic\nDiogo Fontes de Franca\nGiovanni lima do nascimento\nLuiz
-    Filipe Albuquerque GOmes\n\ncorrecao de bugs -\n\nDimitri Medeiros Marinovic\n\nAgradecimentos
-    Especiais -\n\nchatgpt\nindianos do youtube\nCLaudio Tadeu Cristino\n\nPublicacao
-    -\n\nCTC inc.\n\n"
+  m_text: "\nDesign -\n\nGiovanni lima do nascimento\n\nDesign de niveis -\n\nChristian
+    Oliveira do Ramo\nDiogo Fontes de Franca\nCaio fontes de Melo\n\nProgramadores
+    -\n\nCaio fontes de melo\nChristian Oliveira do Ramo\nDimitri Medeiros Marinovic\nDiogo
+    Fontes de Franca\nGiovanni lima do nascimento\nLuiz Filipe Albuquerque GOmes\n\nHistoria
+    -\n\nCaio fontes de melo\nLuiz Filipe Albuquerque GOmes\n\nGame designers - \n\nCaio
+    fontes de melo\nChristian Oliveira do Ramo\nLuiz Filipe Albuquerque GOmes\n\nMusica
+    e sons -\n\nDiogo fontes de Franca\n\nTestes -\n\nCaio Fontes de Melo\nChristian
+    Oliveira do Ramo\nDimitri Medeiros Marinovic\nDiogo Fontes de Franca\nGiovanni
+    lima do nascimento\nLuiz Filipe Albuquerque GOmes\n\ncorrecao de bugs -\n\nChristian
+    Oliveira do Ramo\nDimitri Medeiros Marinovic\n\nAgradecimentos Especiais -\n\nchatgpt\nindianos
+    do youtube\nCLaudio Tadeu Cristino\n\nPublicacao -\n\nCTC inc.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5afaa43816dfb824e82a940201b858db, type: 2}
   m_sharedMaterial: {fileID: 3312683750844668080, guid: 5afaa43816dfb824e82a940201b858db, type: 2}

@@ -7,6 +7,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public string arenaSceneName;
 
     public string farmSceneName;
+    public string creditsSceneName;
     public static GameManager instance;
     public Volume ppv; // this is the post processing volume
     public TextMeshProUGUI hourDisplay; // Display Time
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     public bool fightIsToStart = false;
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
+
 
     private Dictionary<Vector2, (FarmTile.PlantState, Vector3)> farmTileStates = new Dictionary<Vector2, (FarmTile.PlantState, Vector3)>();
 
@@ -78,9 +81,16 @@ public class GameManager : MonoBehaviour
     {
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
-        if (canComeBackToFarm)
+        if (canComeBackToFarm && DayManager.dm.days == 5)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(creditsSceneName);
+            Time.timeScale = 1;
+        }
+        else if (canComeBackToFarm)
         {
             canComeBackToFarm = false;
+            InventoryManager.Instance.SaveInventory();
             tm.Teleport(farmSceneName);
         }
         else if (playerHealth == null)

@@ -49,6 +49,7 @@ MonoBehaviour:
   dayManagerOriginal: {fileID: 11400000, guid: 8a6f920e2206311448b2235e367ea3ce, type: 2}
   arenaSceneName: Arena2
   farmSceneName: TESTEInventarioDialogo
+  creditsSceneName: Credits
   ppv: {fileID: 0}
   hourDisplay: {fileID: 0}
   dayDisplay: {fileID: 0}
@@ -61,38 +62,7 @@ MonoBehaviour:
   fighting: 0
   fightIsToStart: 0
   spawnPosition: {x: 0, y: 0, z: 0}
-  isOnFarm: 0
-  inventoryManager: {fileID: 8852271864891287958, guid: efb7a429e61965a43b4799d8edcc16d8, type: 3}
-  inventoryItem: {fileID: 616279112734498217, guid: 46b21e21cd46fad4b97250afa9ede3e0, type: 3}
-  inventorySlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  isOnFarm: 1
 --- !u!114 &4831877748051475349
 MonoBehaviour:
   m_ObjectHideFlags: 0

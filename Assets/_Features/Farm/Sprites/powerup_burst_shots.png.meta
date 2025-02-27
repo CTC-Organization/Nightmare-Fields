@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      powerup_burst_shots_0: -6506378833858336621
+      powerup_burst_shots_1: -5708254972744526938
+      powerup_burst_shots_2: 7253525534950773701
+      powerup_burst_shots_3: 5037701885981996211
+      powerup_burst_shots_4: -7648616644401014010
+      powerup_burst_shots_5: 2287406281898459142
+      powerup_burst_shots_6: -4952267202204713356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -16,12 +16,22 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<int, Item> savedInventory = new Dictionary<int, Item>();
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Mantém o inventário entre cenas
+        }
+        else
+        {
+            Destroy(gameObject); // Garante que só exista um inventário
+        }
+    }
+
     private void Start()
     {
-        if (Instance == this)
-    {
-        LoadInventory(); // Restaura o inventário ao carregar a cena
-    }
         ChangeSelectedSlot(0);
         gunController = GameObject.FindWithTag("Player")?.GetComponent<GunController>();
 

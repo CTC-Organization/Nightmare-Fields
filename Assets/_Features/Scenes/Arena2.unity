@@ -8873,7 +8873,7 @@ MonoBehaviour:
   - {fileID: 14733936}
   spawnDelay: 0.5
   currentDay: 5
-  enemiesPerDay: 140000001e000000280000003200000037000000
+  enemiesPerDay: 0100000001000000010000000100000001000000
 --- !u!1 &1350707193
 GameObject:
   m_ObjectHideFlags: 0

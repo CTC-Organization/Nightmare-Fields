@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lavender_burst_shots_0: -769361899955294667
+      lavender_burst_shots_1: -8406081942948927190
+      lavender_burst_shots_2: -423366319861133764
+      lavender_burst_shots_3: 403829751727707430
+      lavender_burst_shots_4: 1241894356842852015
+      lavender_burst_shots_5: -802404344477172611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

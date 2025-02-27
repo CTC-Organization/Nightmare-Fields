@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      seed_burst_shots_0: 4585708388403736622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
