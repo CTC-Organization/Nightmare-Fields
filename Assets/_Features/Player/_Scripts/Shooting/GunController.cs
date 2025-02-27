@@ -6,7 +6,6 @@ namespace TopDown.Shooting
 {
     public class GunController : MonoBehaviour
     {
-        //Cooldown normal attack
         [Header("Cooldown normal attack")]
         [SerializeField] private float coolDown = 0.25f;
         private float _coolDownTimer;
@@ -16,69 +15,108 @@ namespace TopDown.Shooting
         [SerializeField] private GameObject _bulletPrefabEspecial;
         [SerializeField] private Transform _firePoint;
 
-        //Cooldown especial attack
         [Header("Cooldown especial attack")]
         [SerializeField] private float coolDownSpecial = 5f;
         private float _coolDownTimerEspecial;
 
+        private bool isTripleShotActive = false;
+        private bool isAutoFireActive = false;
+        private float powerUpTimer = 0f;
+
         private void Update()
         {
             if (GameManager.instance.isOnFarm) return;
-
+            Debug.Log(GameManager.instance.isOnFarm);
             _coolDownTimer += Time.deltaTime;
             _coolDownTimerEspecial += Time.deltaTime;
-            if (InputManager.IsShooting)
+            powerUpTimer -= Time.deltaTime;
+
+            // Desativa o power-up quando o tempo acabar
+            if (powerUpTimer <= 0)
+            {
+                isTripleShotActive = false;
+                isAutoFireActive = false;
+            }
+
+            if (InputManager.IsShooting && (!isAutoFireActive || _coolDownTimer >= coolDown))
             {
                 Shoot();
             }
+
             if (InputManager.IsSpecialAttacking)
             {
                 SpecialAttack();
             }
         }
 
-        private void SpecialAttack()
+        public void ActivatePowerUp(PowerUp.PowerUpType type, float duration)
         {
-            if (_coolDownTimerEspecial < coolDownSpecial) return;
+            powerUpTimer = duration; // Resetamos o timer antes de ativar o efeito
 
-            // Obter a posi��o do mouse e ajustar a posi��o Z para corresponder ao plano de jogo
-
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
-            mousePosition.z = 0; // Garantir que a posi��o Z seja 0 para o plano 2D
-
-            // Calcular a dire��o do tiro
-            Vector2 direction = (mousePosition - _firePoint.position).normalized;
-            GameObject bullet2 = Instantiate(_bulletPrefabEspecial, _firePoint.position, Quaternion.identity);
-            bullet2.GetComponent<EspecialProjectile>().ShootEspecialBullet(direction);
-
-            Debug.Log("Special Attack!");
-            _coolDownTimerEspecial = 0;
+            if (type == PowerUp.PowerUpType.TripleShot)
+            {
+                isTripleShotActive = true;
+            }
+            else if (type == PowerUp.PowerUpType.AutoFire)
+            {
+                isAutoFireActive = true;
+            }
         }
-
 
         private void Shoot()
         {
             if (_coolDownTimer < coolDown) return;
 
-            // Obter a posi��o do mouse e ajustar a posi��o Z para corresponder ao plano de jogo
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
-            mousePosition.z = 0; // Garantir que a posi��o Z seja 0 para o plano 2D
+            mousePosition.z = 0;
 
-            // Calcular a dire��o do tiro
             Vector2 direction = (mousePosition - _firePoint.position).normalized;
 
-            Debug.Log($"Mouse Position: {mousePosition}");
-            Debug.Log($"Fire Point Position: {_firePoint.position}");
-            Debug.Log($"Direction: {direction}");
+            if (isTripleShotActive)
+            {
+                ShootTriple(direction);
+            }
+            else
+            {
+                SpawnBullet(direction);
+            }
 
             // Screenshake
             CinemachineImpulseSource cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
             cinemachineImpulseSource.GenerateImpulse();
             // Criar o proj�til
+            _coolDownTimer = 0f;
+        }
+
+        private void ShootTriple(Vector2 direction)
+        {
+            float angleOffset = 15f;
+            Quaternion leftRotation = Quaternion.Euler(0, 0, angleOffset);
+            Quaternion rightRotation = Quaternion.Euler(0, 0, -angleOffset);
+
+            SpawnBullet(direction);
+            SpawnBullet(leftRotation * direction);
+            SpawnBullet(rightRotation * direction);
+        }
+
+        private void SpawnBullet(Vector2 direction)
+        {
             GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
             bullet.GetComponent<Projectile>().ShootBullet(direction);
+        }
 
-            _coolDownTimer = 0f; // Reiniciar o cooldown
+        private void SpecialAttack()
+        {
+            if (_coolDownTimerEspecial < coolDownSpecial) return;
+
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+            mousePosition.z = 0;
+
+            Vector2 direction = (mousePosition - _firePoint.position).normalized;
+            GameObject bullet = Instantiate(_bulletPrefabEspecial, _firePoint.position, Quaternion.identity);
+            bullet.GetComponent<EspecialProjectile>().ShootEspecialBullet(direction);
+
+            _coolDownTimerEspecial = 0;
         }
     }
 }

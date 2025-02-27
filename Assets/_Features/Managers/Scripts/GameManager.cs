@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     public string arenaSceneName;
 
     public string farmSceneName;
+    public string creditsSceneName;
     public static GameManager instance;
     public Volume ppv; // this is the post processing volume
     public TextMeshProUGUI hourDisplay; // Display Time
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour
     public bool isOnFarm = true;
     public bool isNightmareMode = false;
 
+
+
+    private Dictionary<Vector2, (FarmTile.PlantState, Vector3)> farmTileStates = new Dictionary<Vector2, (FarmTile.PlantState, Vector3)>();
 
     void Start()
     {
@@ -77,10 +83,18 @@ public class GameManager : MonoBehaviour
     {
         // if (playerHealth.currentHealth <= 0) GameOver();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
-        if (canComeBackToFarm)
+
+        if (canComeBackToFarm && DayManager.dm.days == 5)
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(creditsSceneName);
+            Time.timeScale = 1;
+        }
+        else if (canComeBackToFarm)
         {
             canComeBackToFarm = false;
-            GameManager.instance.isNightmareMode = false;
+            InventoryManager.Instance.SaveInventory();
+            isNightmareMode = false;
             tm.Teleport(farmSceneName);
         }
         else if (playerHealth == null)
@@ -141,6 +155,22 @@ public class GameManager : MonoBehaviour
             wonPanel.SetActive(false);
         canComeBackToFarm = true;
     }
+
+    public void SaveFarmTileState(Vector2 position, FarmTile.PlantState state, Vector3 plantPosition)
+    {
+        farmTileStates[position] = (state, plantPosition);
+        Debug.Log($"FarmTile salvo: {position} - {state}");
+    }
+
+
+    public (FarmTile.PlantState, Vector3) GetFarmTileState(Vector2 position)
+    {
+        Vector3 plantPosition = farmTileStates[position].Item2;
+        plantPosition += Vector3.up;
+        return (FarmTile.PlantState.Grown, plantPosition);
+    }
+
+
     // private void OnEnable()
     // {
     //     pauseResumePressed.action.started += PauseResume;

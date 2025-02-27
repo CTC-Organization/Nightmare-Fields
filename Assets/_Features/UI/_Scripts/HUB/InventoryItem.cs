@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [HideInInspector] public Item item;
-    [HideInInspector] public int count = 1;
+    public Item item;
+    public int count = 1;
     public Image image;
     public Text countText;
-    [HideInInspector]
     public Transform parentAfterDrag;
 
     public void InitializeItem(Item newItem)
@@ -21,8 +20,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void RefreshCount()
     {
         countText.text = count.ToString();
-        bool textActive = count > 1;
-        countText.gameObject.SetActive(textActive);
+        countText.gameObject.SetActive(count > 1);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -41,6 +39,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+        transform.localPosition = Vector3.zero;
         image.raycastTarget = true;
     }
 }

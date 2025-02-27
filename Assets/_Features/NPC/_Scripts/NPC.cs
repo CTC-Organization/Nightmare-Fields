@@ -6,31 +6,70 @@ public class NPC : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public Text dialogueText;
-    public string[] dialogue;
+    public string[] dialogueDay1;
+    public string[] dialogueDay2;
+    public string[] dialogueDay3;
+    public string[] dialogueDay4;
+    public string[] dialogueDay5;
+    private string[] currentDialogue;
     private int index;
 
     public GameObject contButton;
     public float wordSpeed;
     public bool playerIsClose;
 
-    // Update is called once per frame
+    void Start()
+    {
+        UpdateDialogueBasedOnDay();
+    }
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C) && playerIsClose)
+        if (Input.GetKeyDown(KeyCode.C) && playerIsClose)
         {
-            if(dialoguePanel.activeInHierarchy)
+            if (dialoguePanel.activeInHierarchy)
             {
                 zeroText();
-            } else
+            }
+            else
             {
+                UpdateDialogueBasedOnDay();
                 dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
+            if (dialogueText.text == currentDialogue[index])
+            {
+                contButton.SetActive(true);
+            }
         }
-        if(dialogueText.text == dialogue[index])
+        
+    }
+
+    void UpdateDialogueBasedOnDay()
+    {
+        int currentDay = DayManager.dm.days;
+
+        if (currentDay == 1)
         {
-            contButton.SetActive(true);
+            currentDialogue = dialogueDay1;
         }
+        else if (currentDay == 2)
+        {
+            currentDialogue = dialogueDay2;
+        }
+        else if (currentDay == 3)
+        {
+            currentDialogue = dialogueDay3;
+        }
+        else if (currentDay == 4)
+        {
+            currentDialogue = dialogueDay4;
+        }
+        else
+        {
+            currentDialogue = dialogueDay5;
+        }
+        index = 0;
     }
 
     public void zeroText()
@@ -42,7 +81,7 @@ public class NPC : MonoBehaviour
 
     IEnumerator Typing()
     {
-        foreach(char letter in dialogue[index].ToCharArray())
+        foreach (char letter in currentDialogue[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
@@ -52,12 +91,13 @@ public class NPC : MonoBehaviour
     public void NextLine()
     {
         contButton.SetActive(false);
-        if(index < dialogue.Length - 1)
+        if (index < currentDialogue.Length - 1)
         {
             index++;
             dialogueText.text = "";
             StartCoroutine(Typing());
-        } else
+        }
+        else
         {
             zeroText();
         }
@@ -65,7 +105,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             playerIsClose = true;
         }
@@ -73,7 +113,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             playerIsClose = false;
             zeroText();

@@ -107,17 +107,14 @@ public class DayManager : ScriptableObject
         {
             // portals = GameObject.FindGameObjectsWithTag("Portal");
             OpenPortalsOnScene();
-            Debug.Log("Atualizou portais");
             GameManager.instance.fightIsToStart = true;
             if (targetIndicator == null)
             {
                 targetIndicator = GameObject.FindWithTag("TargetIndicator").GetComponent<TargetIndicator>();
             }
-            Debug.Log("tentando ativar targetIndicator");
 
             targetIndicator.gameObject.SetActive(true);
             targetIndicator.activated = true;
-            Debug.Log("target indicator foi Ativado");
 
         }
         else if (hours >= startFightingHour && GameManager.instance.fighting == false) //24 hr = 1 day

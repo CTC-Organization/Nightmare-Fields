@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Features/Scenes/Arena2.unity
     guid: 01f1db623b18f9f4a9e96d46dd14254d
+  - enabled: 1
+    path: Assets/_Features/Scenes/Credits.unity
+    guid: fe7a49d565be61740987fe3ffbc39c18
   - enabled: 0
     path: Assets/_Features/Scenes/Farm.unity
     guid: 940d1c6d4bcce8540a9b3b75c35bd7d9
