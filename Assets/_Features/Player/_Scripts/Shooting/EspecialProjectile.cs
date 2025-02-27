@@ -18,12 +18,18 @@ public class EspecialProjectile : MonoBehaviour
 
     public void ShootEspecialBullet(Vector2 direction)
     {
+        //lifeTimer = 0;
+        //body.linearVelocity = Vector2.zero; // Corrigido de linearVelocity para velocity
+        //transform.up = direction; // Ajusta a rota��o do proj�til para a dire��o do tiro
+        //gameObject.SetActive(true);
+        //body.linearVelocity = direction * speed; // Define a velocidade constante do proj�til
+
+
         lifeTimer = 0;
-        body.linearVelocity = Vector2.zero; // Corrigido de linearVelocity para velocity
-        transform.up = direction; // Ajusta a rota��o do proj�til para a dire��o do tiro
+        transform.up = direction; // Ajusta a rotação do projétil para a direção do tiro
         gameObject.SetActive(true);
 
-        body.linearVelocity = direction * speed; // Define a velocidade constante do proj�til
+        body.linearVelocity = direction.normalized * speed; // Define a velocidade constante do projétil
     }
 
     private void Update()
@@ -57,6 +63,27 @@ public class EspecialProjectile : MonoBehaviour
             // Destroi o proj�til ap�s a colis�o
             Destroy(gameObject);
         }
+        if (collision.CompareTag("Obstacle"))
+        {
+            Instantiate(explosionVFX, collision.transform.position, Quaternion.identity);
+
+            // Aplica dano ao zumbi atingido
+            ApplyDamage(collision.gameObject);
+
+            // Aplica dano aos zumbis pr�ximos
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("Enemy"))
+                {
+                    ApplyDamage(hitCollider.gameObject);
+                }
+            }
+
+            // Destroi o proj�til ap�s a colis�o
+            Destroy(gameObject);
+        }
+
     }
 
     private void ApplyDamage(GameObject enemy)
