@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5757698402439581532}
   - component: {fileID: 7899366485867998101}
   - component: {fileID: 2094788589144392875}
+  - component: {fileID: -6608094237267185677}
   m_Layer: 6
   m_Name: Gargoyle
   m_TagString: Enemy
@@ -341,3 +342,19 @@ MonoBehaviour:
   straightProjectilePrefab: {fileID: 5346954962582781564, guid: 8900540ece9c61548957fa76f9e44d0b, type: 3}
   burstFireInterval: 0.2
   burstFireCount: 5
+--- !u!114 &-6608094237267185677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4c4e8b4e02ee840909fe3471dbbdbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+  - prefab: {fileID: 5855625217485013922, guid: 7c51301e8ca1aba46999ab34be328cbe, type: 3}
+    weight: 60
+  noDropChance: 0.6

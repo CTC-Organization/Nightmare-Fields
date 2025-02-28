@@ -1,116 +1,119 @@
-<div align="center">
+# Nightmare Fields
 
-# :video_game: **TÍTULO DO JOGO**
+## Visão Geral do Jogo
 
-:books: **Game Design Document**  
-:bookmark: **Versão:** 0.0  
+**Nome do Jogo:** Nightmare Fields  
+**Gênero:** Simulador de vida rural, Tiro, Zumbi  
+**Plataforma:** PC  
+**Público-Alvo:** Adolescente
 
-</div>
+### Resumo
 
----
+Um apocalipse biológico se espalha na cidade de Seattle por conta da ganância de uma empresa. Agora cabe aos protagonistas James, Charlie e Lorena enfrentar os zumbis gerados por um novo elemento na tabela periódica, proteger a cidade e evoluir sua fazenda para salvar o mundo!
 
-### **Sumário**
+## Inspirações
 
-:o: [Autores](#autores)
+### Stardew Valley
 
-:o: [História](#história)
+Uma experiência relaxante de cuidar da própria fazenda, mas com muito mais do que só plantar e colher. O jogo permite explorar, conhecer os moradores, criar animais, minerar e se aventurar em cavernas cheias de mistério.
 
-:o: [Gameplay](#gameplay)
+### Vampire Survivors
 
-:o: [Personagens](#personagens)
+Enfrente enxames de inimigos enquanto fica cada vez mais forte. A jogabilidade é simples, mas viciante, e tudo gira em torno de sobreviver o máximo possível escolhendo os melhores upgrades.
 
-:o: [Controles](#controles)
+### Outras Referências
 
-:o: [Câmera](#câmera)
+- Harvest Moon: Light of Hope
+- Plants vs Zombies
+- Ratchet and Clank: Rift Apart
+- Don't Starve Together
+- Brotato
+- Metal Slug
+- Resident Evil
+- GTA V
 
-:o: [Universo do Jogo](#universo-do-jogo)
+## Mecânicas de Jogo
 
-:o: [Inimigos](#inimigos)
+### Jogabilidade
 
-:o: [Interface](#interface)
+- Os jogadores devem salvar a cidade através de um sistema de ondas de zumbis.
+- O jogo possui um ciclo de dias: de dia, o jogador cuida da fazenda; à noite, luta contra zumbis.
+- Cada personagem tem habilidades e ataques únicos.
+- Cultive plantas modificadas para gerar power-ups e defender a fazenda e a cidade.
+- O jogador deve sobreviver a 10 ondas cada vez mais difíceis, enfrentando diversos tipos de zumbis até o chefão final.
+- Para jogadores mais corajosos, há o modo "PESADELO", onde zumbis mais poderosos aparecem, mas as recompensas são maiores.
 
-:o: [Cutscenes](#cutscenes)
+### Controles
 
----
+- **WASD** - Movimentação do jogador
+- **Botão Esquerdo do Mouse** - Tiro básico / Interação com personagens
+- **Botão Direito do Mouse** - Especial do personagem
+- **Scroll do Mouse** - Trocar tipo de tiro
+- **Esc** - Pause do jogo
 
-### **Autores**
-- Nome 1  
-- Christian Oliveira
-- Caio Fontes 
-- Nome 4  
-- Nome 5  
+### Objetivos
 
----
+- Melhorar a fazenda, defender-se das 10 ondas e derrotar o chefão final.
+- Lorena deve criar o antídoto para salvar a humanidade.
 
-### **História**
-- Descrição detalhada da história (lembre-se que toda história deve conter um começo, meio e fim).  
-- Inclua uma breve descrição do ambiente onde o jogo acontece e dos principais personagens envolvidos na história.  
+### Recompensas
 
----
+- Zumbis podem dropar óleo para regar plantas ou sementes de power-ups.
+- Sobrevivendo ao modo Pesadelo, o jogador ganha uma skin premium exclusiva.
 
-### **Gameplay**
-- Descrição da mecânica do jogo.  
-- Quais são os desafios encontrados pelo jogador e quais os métodos usados para superá-los?  
-- Como o jogador avança no jogo e como os desafios ficam mais difíceis?  
-- Relação entre gameplay e história: quebra-cabeças, chefões, etc.  
-- Sistema de recompensas: pontos, dinheiro, experiência, itens colecionáveis, armas, poderes, etc.  
-- Condições de vitória: salvar o universo, matar inimigos, coletar itens, etc.  
-- Condições de derrota: perder vidas, ficar sem energia, etc.  
+## História e Narrativa
 
----
+### Enredo
 
-### **Personagens**
-- Descrição das características dos personagens principais (nome, idade, tipo).  
-- História dos personagens.  
-- Personalidade e habilidades específicas (poderes, armas, etc.).  
-- Ilustração visual dos personagens.  
-- Ações disponíveis (andar, correr, pular, escalar, nadar, etc.).  
-- Métricas de gameplay do personagem principal.  
+- **Ano:** 2082
+- **Localização:** Seattle, Washington
+- **Personagens principais:** James (62 anos), Charlie (29 anos), Lorena (30 anos)
+- **Eventos importantes:**
+  - Morte da esposa de James (2053)
+  - Terceira Guerra Mundial (2042 - 2050)
 
----
+James, veterano da Terceira Guerra Mundial, tornou-se um fazendeiro para criar seus filhos, Charlie e Lorena. Charlie herdou o gosto pela agricultura, enquanto Lorena se tornou cientista na empresa MESEQ. A MESEQ descobriu uma substância capaz de aumentar a vida útil das plantas, mas, movidos pela ganância, ignoraram os testes de segurança e lançaram o produto no mercado. O consumo dessa substância transformou as pessoas em zumbis irracionais.
 
-### **Controles**
-- Como o jogador controla o personagem principal?  
-- Inclua uma imagem ilustrativa (joystick, teclado, etc.) mostrando os comandos disponíveis.  
+Lorena descobre que sua falecida mãe, Eleanor, havia pesquisado modificações genéticas em plantas e encontra anotações que podem ser a chave para reverter a contaminação. Agora, James, Charlie e Lorena devem lutar para defender a fazenda, encontrar um antídoto e salvar Seattle.
 
----
+## Personagens
 
-### Câmera
-- Descrição do funcionamento da câmera do jogo.  
-- Como o jogador visualiza o jogo?  
-- Ilustre como será a visualização.  
-- Nota: esta seção pode ser uma subseção da interface do usuário.  
+### Charlie
 
----
+- Filho mais velho de James
+- Especialista em cultivo e defesa da fazenda
+- Habilidade: Cria armadilhas e reforça barricadas
 
-### **Universo do Jogo**
-- Descrição e ilustração dos cenários do jogo.  
-- Conexão entre as fases.  
-- Estrutura do mundo e emoções presentes em cada ambiente.  
-- Tipo de música utilizado em cada fase.  
-- Ilustrações dos mapas e fases do jogo.  
+### Lorena
 
----
+- Cientista e especialista em biotecnologia
+- Habilidade: Desenvolve power-ups e cria o antídoto
 
-### **Inimigos**
-- Descrição e ilustração dos inimigos no universo do jogo.  
-- Ambientes ou fases onde os inimigos aparecem.  
-- Métodos para superar os inimigos.  
-- Recompensas por derrotar inimigos.  
-- Comportamentos e habilidades de cada inimigo.  
+### James
 
----
+- Veterano de guerra e estrategista
+- Habilidade: Planejamento tático e liderança
 
-### **Interface**
-- Design e ilustração do HUD (head-up display).  
-- Posicionamento dos elementos do HUD.  
-- Design e ilustração das interfaces: tela inicial, menus, telas de pause e loading, etc.  
+## Mundo do Jogo
 
----
+- **Localização:** Seattle, Washington
+- **Ano:** 2087
+- **Cenário:** Zona rural em um mundo pós-apocalíptico com uma cidade destruída e poucos sobreviventes.
 
-### **Cutscenes**
-- Descrição das cutscenes (filmes) incluídas no jogo.  
-- Roteiro e método de criação.  
-- Momentos em que as cutscenes serão exibidas.  
+## Design de Níveis
+
+### Estrutura dos Níveis
+
+- **Fazenda:** O jogador cultiva plantas modificadas que ajudam na defesa e no combate.
+- **Cidade:** O local dominado por zumbis onde ocorrem as batalhas.
 
 ---
+
+### Screenshots
+
+<p align="center">
+  <img src="image.png" width="66%">
+  <img src="image-1.png" width="66%">
+  <img src="image-3.png" width="66%">
+  <img src="image-2.png" width="66%">
+</p>
