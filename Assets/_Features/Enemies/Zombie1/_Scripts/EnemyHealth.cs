@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float startingEnemyHealth;
-    private bool isDead; // blend tree buga animation event porque o float não é exatamente 1 ou 0 (logo as duas animações de mortes são executadas por debaixo dos panos - morrendo duas vezes),
 
-    private float currentHealth;
+    [SerializeField] public float startingHealth;
+    public float currentHealth;
+    private bool isDead; // blend tree buga animation event porque o float não é exatamente 1 ou 0 (logo as duas animações de mortes são executadas por debaixo dos panos - morrendo duas vezes),
     //private static int collisionCount = 0; // Contador de colisões
 
     private void Start()
     {
-        currentHealth = startingEnemyHealth;
+        currentHealth = startingHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingEnemyHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
         Debug.Log($"Dano no inimigo ({name}) recebido: {damage}, \nvida atual: {currentHealth}");
 
         if (currentHealth <= 0)
@@ -26,15 +26,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void AddHealth(float value)
     {
-        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingEnemyHealth);
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
     }
 
     private void SetDying()
     {
         Debug.Log("Inimigo esta morrendo");
-        EnemyMovement em = GetComponent<EnemyMovement>();
-        em.isDying = true;
-        em.animator.SetBool("IsDying", em.isDying);
+        EnemyController ec = GetComponent<EnemyController>();
+        ec.isDying = true;
+        ec.animator.SetBool("IsDying", ec.isDying);
         GetComponent<CircleCollider2D>().enabled = false;
     }
 
@@ -49,7 +49,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger");
         if (collision.CompareTag("Player_Bullet"))
         {
             Debug.Log($"Enemy hit by Player_Bullet: {collision.name}");

@@ -4,13 +4,13 @@ using Unity.VisualScripting;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Animator animator;
     [SerializeField] private AIDestinationSetter aiDestinationSetter;
     public IAstarAI ai;
-    public bool isDying = false;
+    private EnemyController ec;
 
     private void Start()
     {
+        ec = GetComponent<EnemyController>();
         ai = GetComponent<IAstarAI>();
         aiDestinationSetter = GetComponent<AIDestinationSetter>();
 
@@ -19,11 +19,17 @@ public class EnemyMovement : MonoBehaviour
         {
             SetTarget(player.transform);
         }
+
+        if (Random.Range(0, 100) > 95)
+        { // sorteio mini modo hunter
+            ai.maxSpeed *= 2;
+            GetComponent<EnemyHealth>().startingHealth *= 1.2f;
+        }
     }
 
     private void Update()
     {
-        if (isDying && !ai.isStopped)
+        if (ec.isDying && !ai.isStopped)
         {
 
             ai.destination = transform.position;
@@ -34,11 +40,11 @@ public class EnemyMovement : MonoBehaviour
             }
             return;
         }
-        else if (isDying)
+        else if (ec.isDying)
         {
             return;
         }
-        UpdateAnimatorParameters();
+        ec.UpdateAnimatorParameters(ai.velocity);
     }
 
     public void SetTarget(Transform target)
@@ -46,18 +52,6 @@ public class EnemyMovement : MonoBehaviour
         if (aiDestinationSetter != null)
         {
             aiDestinationSetter.target = target;
-        }
-    }
-
-    private void UpdateAnimatorParameters()
-    {
-        Vector3 velocity = ai.velocity;
-        animator.SetFloat("moveSpeed", velocity.magnitude);
-
-        if (velocity.magnitude > 0.1f)
-        {
-            animator.SetFloat("moveX", velocity.x);
-            animator.SetFloat("moveY", velocity.y);
         }
     }
 }

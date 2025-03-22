@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int enemyCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public  DayManager dayManagerOriginal;
+    public DayManager dayManagerOriginal;
     public string arenaSceneName;
 
     public string farmSceneName;
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public bool fightIsToStart = false;
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
+    public bool isNightmareMode = false;
+
 
 
     private Dictionary<Vector2, (FarmTile.PlantState, Vector3)> farmTileStates = new Dictionary<Vector2, (FarmTile.PlantState, Vector3)>();
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
         else if (canComeBackToFarm)
         {
             canComeBackToFarm = false;
+            isNightmareMode = false;
             InventoryManager.Instance.SaveInventory();
             tm.Teleport(farmSceneName);
         }
