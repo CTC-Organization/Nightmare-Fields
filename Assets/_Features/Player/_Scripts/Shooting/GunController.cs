@@ -8,6 +8,9 @@ namespace TopDown.Shooting
         [SerializeField] private float coolDown = 0.25f;
         private float _coolDownTimer;
 
+        public AudioSource audioSource; // Referência ao componente AudioSource
+        public AudioClip shootSound; // Som de tiro
+
         [Header("References")]
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private GameObject _bulletPrefabEspecial;
@@ -39,6 +42,7 @@ namespace TopDown.Shooting
             if (InputManager.IsShooting && (!isAutoFireActive || _coolDownTimer >= coolDown))
             {
                 Shoot();
+                
             }
 
             if (InputManager.IsSpecialAttacking)
@@ -64,6 +68,13 @@ namespace TopDown.Shooting
         private void Shoot()
         {
             if (_coolDownTimer < coolDown) return;
+            Debug.Log(audioSource, shootSound);
+            Debug.Log("ABADYFWVDW");
+            if (audioSource != null && shootSound != null)
+                {
+                    Debug.Log("ABADYFWVDW");
+                audioSource.PlayOneShot(shootSound);
+                }
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
             mousePosition.z = 0;
