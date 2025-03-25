@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using TopDown.Shooting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {

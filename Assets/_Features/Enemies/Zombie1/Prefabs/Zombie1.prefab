@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 20736263090893180}
   - component: {fileID: 5757698402439581532}
   - component: {fileID: 7899366485867998101}
+  - component: {fileID: -7417789053085585514}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Enemy
@@ -274,9 +275,7 @@ MonoBehaviour:
   attackCooldown: 1.5
   hitBoxSize: {x: 1, y: 2.58, z: 1}
   attackStartDistance: 2
-  animator: {fileID: 20736263090893180}
   attackOrigin: {x: 0, y: -0.4, z: 0}
-  enemyMovement: {fileID: 7678263879996182864}
   ec: {fileID: 7899366485867998101}
   attackVFX: {fileID: 3173251329650498938, guid: 1e716ca46bce1184e95788f38bf4b2eb, type: 3}
 --- !u!114 &7007042320948797725
@@ -291,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24823212148049a4f95244a8ac584fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingEnemyHealth: 2
+  startingHealth: 0
   currentHealth: 0
 --- !u!95 &20736263090893180
 Animator:
@@ -341,3 +340,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 20736263090893180}
   isDying: 0
+  isDashing: 0
+--- !u!114 &-7417789053085585514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026237430215474164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d317e29d6ef88643a2eb28eaf2b8595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+  - prefab: {fileID: 5855625217485013922, guid: 7c51301e8ca1aba46999ab34be328cbe, type: 3}
+    weight: 60
+  noDropChance: 0.33

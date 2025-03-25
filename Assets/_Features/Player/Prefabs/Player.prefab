@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1519973318291676395}
   - component: {fileID: 7082862616692250247}
   - component: {fileID: 2565333225362033715}
+  - component: {fileID: 2002098009684849409}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -198,6 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 0.25
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
   _bulletPrefab: {fileID: 7925154858442275306, guid: be609be04ed9ee6409f5ff81c66fc310, type: 3}
   _bulletPrefabEspecial: {fileID: 0}
   _firePoint: {fileID: 1891087292501421015}
@@ -513,6 +516,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5173ee85c22f8d24d96cca660f3a0b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2002098009684849409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185183857724772492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 1
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.1
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0.5, y: 0.5, z: 0}
 --- !u!1 &4418388030447015251
 GameObject:
   m_ObjectHideFlags: 0
