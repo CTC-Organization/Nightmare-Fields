@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class CreditsManager : MonoBehaviour
 {
     public float scrollSpeed = 80f;
-    public float duration = 80f; // Tempo até trocar a cena
-    public string nextScene = "MainMenu"; // Nome da cena para onde irá após os créditos
+    public float duration = 80f; // Tempo atï¿½ trocar a cena
+    public string mainMenuSceneName;
 
     private RectTransform rectTransform;
     private float elapsedTime = 0f;
@@ -17,16 +17,16 @@ public class CreditsManager : MonoBehaviour
 
     void Update()
     {
-        // Faz os créditos rolarem para cima
+        // Faz os crï¿½ditos rolarem para cima
         rectTransform.anchoredPosition += new Vector2(0, scrollSpeed * Time.deltaTime);
 
         // Conta o tempo
         elapsedTime += Time.deltaTime;
 
-        // Troca a cena após o tempo especificado
+        // Troca a cena apï¿½s o tempo especificado
         if (elapsedTime >= duration)
         {
-            SceneManager.LoadScene(nextScene);
+            SceneManager.LoadScene(mainMenuSceneName);
         }
     }
 }

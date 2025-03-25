@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public Vector3 spawnPosition;
     public bool isOnFarm = true;
     public bool isNightmareMode = false;
+    public bool inCredits = false;
 
 
 
@@ -85,9 +86,12 @@ public class GameManager : MonoBehaviour
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Count();
         if (canComeBackToFarm && DayManager.dm.days == 5)
         {
-            Time.timeScale = 1;
+            Time.timeScale = 0;
             SceneManager.LoadScene(creditsSceneName);
             Time.timeScale = 1;
+            inCredits = true;
+            Destroy(this.gameObject);
+
         }
         else if (canComeBackToFarm)
         {
@@ -168,38 +172,4 @@ public class GameManager : MonoBehaviour
         plantPosition += Vector3.up;
         return (FarmTile.PlantState.Grown, plantPosition);
     }
-
-
-    // private void OnEnable()
-    // {
-    //     pauseResumePressed.action.started += PauseResume;
-    // }
-    // private void OnDisable()
-    // {
-    //     pauseResumePressed.action.started -= PauseResume;
-    // }
-
-    /// <summary>
-    /// Função responsável pelo attack
-    /// </summary>
-    // void PauseResume(InputAction.CallbackContext ctx)
-    // {
-    //     Debug.Log("apertou");
-    //     if (isPaused) // resume
-    //     {
-    //         Debug.Log("Resume");
-    //         if (pausePanel != null)
-    //             pausePanel.SetActive(false);
-    //         Time.timeScale = 1;
-    //         isPaused = false;
-    //     }
-    //     else if (!isPaused) // pause
-    //     {
-    //         Debug.Log("Pausou");
-    //         if (pausePanel != null)
-    //             pausePanel.SetActive(true);
-    //         Time.timeScale = 0;
-    //         isPaused = true;
-    //     }
-    // }
 }

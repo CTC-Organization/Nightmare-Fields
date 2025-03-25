@@ -6,22 +6,18 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     //Load Scene
-    [SerializeField] string tutorialSceneName = "TESTEIntroducao";
-    public void Play()
-    {
-        try
-        {
-            Destroy(DayManager.dm);
-            Destroy(GameManager.instance);
-            Time.timeScale = 1f;
+    [SerializeField] string tutorialSceneName;
+    [SerializeField] string creditsSceneName;
 
-            SceneManager.LoadScene(tutorialSceneName);
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError(ex.Message);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+    public void StartGame()
+    {
+        SceneManager.LoadScene(tutorialSceneName);
+    }
+
+    public void ShowCredits()
+    {
+        SceneManager.LoadScene(creditsSceneName);
+
     }
 
     //Quit Game

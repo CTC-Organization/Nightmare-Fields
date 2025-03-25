@@ -740,8 +740,8 @@ MonoBehaviour:
   - "Eu preciso encontrar uma solu\xE7\xE3o. N\xE3o sei como, nem se \xE9 possivel,
     mas nao posso simplesmente esperar. Se existe um jeito de reverter isso... eu\_vou\_descobrir."
   contButton: {fileID: 1605708654}
-  wordSpeed: 0.03
-  nextSceneName: TESTEInventarioDialogo
+  wordSpeed: 0.001
+  nextSceneName: main-farm
 --- !u!1 &1066280006
 GameObject:
   m_ObjectHideFlags: 0

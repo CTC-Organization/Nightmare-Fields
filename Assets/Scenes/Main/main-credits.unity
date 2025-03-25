@@ -516,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 40
   duration: 80
-  nextScene: MainMenu
+  mainMenuSceneName: main-mainMenu
 --- !u!1 &453066653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 40
   duration: 80
-  nextScene: MainMenu
+  mainMenuSceneName: 
 --- !u!1 &1179436810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 40
   duration: 80
-  nextScene: MainMenu
+  mainMenuSceneName: 
 --- !u!1 &1900875182
 GameObject:
   m_ObjectHideFlags: 0
